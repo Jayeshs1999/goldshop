@@ -209,7 +209,7 @@ export default function AddUpdateTableDialog({
                       );
                     }}
                   />
-                  {data?.price && (
+                  {data?.price ? (
                     <MHWTextField
                       type={"text"}
                       value={data?.price}
@@ -219,7 +219,7 @@ export default function AddUpdateTableDialog({
                       disabled={true}
                       handleChange={(e) => {}}
                     />
-                  )}
+                  ) : null}
                   {/* </div> */}
                   {/* <div style={{ width: index === 0 ? "43%" : "40%" }}> */}
                   <MHWAutoSelect

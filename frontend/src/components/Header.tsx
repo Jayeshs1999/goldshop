@@ -4,8 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Navbar
       collapseOnSelect
@@ -14,7 +16,12 @@ const Header = () => {
       className="bg-body-tertiary"
     >
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <img src={logo} style={{ height: "65px" }} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

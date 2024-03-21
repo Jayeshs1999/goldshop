@@ -5,9 +5,11 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import MHWButton from "../utils/MHWButton";
 import Card from "../utils/Card";
 import AddUpdateTableDialog from "../utils/AddUpdateTableDialog";
+import useDeviceType from "../utils/DeviceType";
 
 const HomeScreen = () => {
   const [open, setOpen] = useState(false);
+  const deviceType = useDeviceType();
   const [comesFrom, setComesFrom] = useState("");
   const [tablesData, setTablesData] = useState<any>([]);
   const [orderData, setOrderDate] = useState<any>({});
@@ -81,7 +83,8 @@ const HomeScreen = () => {
             style={{
               marginTop: "10px",
               display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
+              gridTemplateColumns:
+                deviceType === "mobile" ? "1fr 1fr" : "1fr 1fr 1fr",
               justifyContent: "center",
 
               gap: "20px",

@@ -7,7 +7,13 @@ const App = () => {
   return (
     <>
       <Header />
-      <main style={{ height: "calc(100vh - 173px)" }}>
+      <main
+        style={{
+          height: "calc(100vh - 173px)",
+          overflow: "auto",
+          padding: "20px",
+        }}
+      >
         <Outlet />
       </main>
       <Footer />
