@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router";
+import { Typography } from "@mui/material";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [selectedLink, setSelectedLink] = useState("");
   return (
     <Navbar
       collapseOnSelect
@@ -19,6 +21,7 @@ const Header = () => {
         <Navbar.Brand
           style={{ cursor: "pointer" }}
           onClick={() => {
+            setSelectedLink("");
             navigate("/");
           }}
         >
@@ -27,7 +30,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
+            {/* <Nav.Link href="#features">Features</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
             <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -39,13 +42,37 @@ const Header = () => {
               <NavDropdown.Item href="#action/3.4">
                 Separated link
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Typography
+              onClick={() => {
+                setSelectedLink("menulist");
+                navigate("./menuList");
+              }}
+              style={{
+                cursor: "pointer",
+                fontWeight: selectedLink === "menulist" ? "bold" : "normal",
+              }}
+            >
+              Menu List
+            </Typography>
+            <Typography
+              onClick={() => {
+                setSelectedLink("history");
+                navigate("./history");
+              }}
+              style={{
+                cursor: "pointer",
+                marginLeft: "20px",
+                fontWeight: selectedLink === "history" ? "bold" : "normal",
+              }}
+            >
+              History
+            </Typography>
+            {/* <Nav.Link eventKey={2} href="#memes">
               Dank memes
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

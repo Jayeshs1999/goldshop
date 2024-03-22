@@ -127,10 +127,6 @@ const HomeScreen = () => {
           }
           setOpen(false);
         }}
-        // handleOrder={(orderData) => {
-        //   setTablesData((prevData: any) => [...prevData, orderData]);
-        //   setOpen(false);
-        // }}
       />
     </>
   );

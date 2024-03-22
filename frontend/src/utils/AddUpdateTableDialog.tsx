@@ -145,8 +145,11 @@ export default function AddUpdateTableDialog({
         open={open}
         fullWidth
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Add
+        <DialogTitle
+          sx={{ m: 0, p: 2, fontSize: "20px", fontWeight: "bold" }}
+          id="customized-dialog-title"
+        >
+          {prevOrderData?.tableName ? "Update Order" : "Add Order"}
         </DialogTitle>
         <IconButton
           aria-label="close"
@@ -323,22 +326,15 @@ export default function AddUpdateTableDialog({
               alignItems: "center",
               gap: "10px",
               margin: "20px",
+              fontWeight: "bold",
             }}
           >
             <div>Total Order:</div>
-            <div style={{ width: "80%" }}>
-              <MHWTextField
-                type={"text"}
-                value={totalOrder}
-                label="Table name"
-                placeHolder="Enter table name"
-                size="small"
-                disabled={comesFrom !== "viewDetails" ? false : true}
-                handleChange={(e) => {
-                  handleTableNo(e, "tableName");
-                }}
-              />
-            </div>
+            <Typography
+              style={{ fontWeight: "bold", fontSize: "20px", color: "red" }}
+            >
+              {totalOrder}
+            </Typography>
           </div>
         )}
       </BootstrapDialog>
