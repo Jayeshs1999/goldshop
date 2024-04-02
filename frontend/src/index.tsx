@@ -15,6 +15,8 @@ import Landing from "./screens/Landing";
 import HomeScreen from "./screens/HomeScreen";
 import MenuListScreen from "./screens/MenuListScreen";
 import HistoryScreen from "./screens/HistoryScreen";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +34,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
