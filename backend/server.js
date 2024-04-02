@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoute);
+const __dirname = path.resolve();
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/build")));
