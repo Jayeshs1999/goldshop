@@ -1,66 +1,14 @@
-import { Typography } from "@mui/material";
 import React from "react";
-import MHWButton from "./MHWButton";
-import "../utils/card.css";
+import "./Card.css"; // Import CSS for styling
 
-interface CardProps {
-  data: any;
-  handleAction: (action: any) => void;
-}
-const Card = ({ data, handleAction }: CardProps) => {
+const Card = ({ imageSrc, heading, subtitle }: any) => {
   return (
-    <div
-      style={{
-        // border: "1px solid red",
-        // width: "30%",
-        // height: "200px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "10px",
-        flexDirection: "column",
-        gap: "16px",
-        position: "relative", // Add position relative for absolute positioning of pseudo-element
-      }}
-    >
-      <Typography style={{ fontSize: "20px", fontWeight: "bold" }}>
-        {data?.tableName}
-      </Typography>
-      <MHWButton
-        background=""
-        fontSize="16px"
-        fontWeight="bold"
-        label="View Total"
-        height=""
-        width="100%"
-        handleClick={() => {
-          handleAction("viewTotal");
-        }}
-      />
-      <MHWButton
-        background="tomato"
-        fontSize="16px"
-        fontWeight="bold"
-        label="Update"
-        height=""
-        width="100%"
-        handleClick={() => {
-          handleAction("update");
-        }}
-      />
-      <MHWButton
-        background="green"
-        fontSize="16px"
-        fontWeight="bold"
-        label="Mark as Completed"
-        height=""
-        width="100%"
-        handleClick={() => {
-          handleAction("completed");
-        }}
-      />
-      <div className="animated-border"></div>{" "}
-      {/* Pseudo-element for animated border */}
+    <div className="card">
+      <img src={imageSrc} alt="Card" className="card-image" />
+      <div className="card-content">
+        <h2 className="card-heading">{heading}</h2>
+        <p className="card-subtitle">{subtitle}</p>
+      </div>
     </div>
   );
 };
