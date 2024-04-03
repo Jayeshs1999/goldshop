@@ -13,11 +13,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Landing from "./screens/Landing";
+import ProductDetail from "./screens/ProductDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<Landing />}></Route>
+      <Route path="/productDetail" element={<ProductDetail />}></Route>
     </Route>
   )
 );

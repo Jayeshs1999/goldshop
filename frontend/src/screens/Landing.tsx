@@ -1,8 +1,10 @@
 import React from "react";
 import Card from "../utils/Card";
 import { img1, img2 } from "../assets";
+import { useNavigate } from "react-router";
 
 const Landing = () => {
+  const navigate = useNavigate();
   const goldArray = [
     {
       imageSrc: img1,
@@ -56,6 +58,9 @@ const Landing = () => {
     >
       {goldArray.map((data) => (
         <Card
+          handleClick={() => {
+            navigate("/productDetail");
+          }}
           imageSrc={data?.imageSrc}
           heading={data?.heading}
           subtitle={data?.subtitle}
