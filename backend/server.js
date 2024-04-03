@@ -10,9 +10,9 @@ const port = process.env.PORT || 5000;
 connectDB();
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("API is running");
-});
+// app.get("/", (req, res) => {
+//   res.send("API is running");
+// });
 
 app.use("/api/users", userRoute);
 const __dirname = path.resolve();
