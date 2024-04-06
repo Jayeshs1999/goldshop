@@ -1,4 +1,4 @@
-.card {
+.gold-card {
   width: 300px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -7,27 +7,27 @@
   margin: 20px;
 }
 
-.card:hover {
+.gold-card:hover {
   transform: translateY(-5px);
 }
 
-.card-image {
+.gold-card-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-.card-content {
+.gold-card-content {
   padding: 20px;
 }
 
-.card-heading {
+.gold-card-heading {
   margin: 0;
   font-size: 24px;
   color: #333;
 }
 
-.card-subtitle {
+.gold-card-subtitle {
   margin-top: 5px;
   font-size: 16px;
   color: #666;

@@ -14,12 +14,30 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Landing from "./screens/Landing";
 import ProductDetail from "./screens/ProductDetails";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import store from "./store";
+import PrivateRoute from "./components/PrivateRoute";
+import ProfileScreen from "./screens/ProfileScreen";
+import ProductListScreen from "./screens/admin/ProductListScreen";
+import ProductEditScreen from "./screens/admin/ProductEditScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<Landing />}></Route>
+      <Route path="/login" element={<LoginScreen />} />
+
+      <Route path="/register" element={<RegisterScreen />} />
+      {/* <Route path="/forgetpassword" element={<ForgetPasswordScreen />} /> */}
       <Route path="/productDetail" element={<ProductDetail />}></Route>
+
+      {/*is any route make Private take it  here  */}
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/productlist" element={<ProductListScreen />} />
+        <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
+      </Route>
     </Route>
   )
 );
@@ -29,9 +47,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
     <RouterProvider router={router} />
-    {/* </Provider> */}
+    </Provider>
   </React.StrictMode>
 );
 

@@ -2,14 +2,36 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router";
-import { Typography } from "@mui/material";
+import { LinkContainer } from "react-router-bootstrap";
+import { Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useLogoutMutation } from "../slices/usersApiSlice";
+import { logout } from "../slices/authSlice";
+import useDeviceType from "../utils/DeviceType";
+import { NavDropdown } from "react-bootstrap";
+import { userProfileVisibleLogic } from "../utils/objects";
 
 const Header = () => {
+  const deviceType = useDeviceType()
+  const { userInfo } = useSelector((state: any) => state.auth);
+  console.log("ui :", userInfo)
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedLink, setSelectedLink] = useState("");
+  const [logoutApiCall] = useLogoutMutation();
+   const logoutHandler = async () => {
+     try {
+       await logoutApiCall("").unwrap();
+       dispatch(logout(""));
+      
+       navigate("/login");
+     } catch (error) {
+       console.log(error);
+     }
+   };
+  
   return (
     <Navbar
       collapseOnSelect
@@ -29,50 +51,41 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            {/* <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown> */}
-          </Nav>
+          <Nav className="me-auto"></Nav>
           <Nav>
-            <Typography
-              onClick={() => {
-                setSelectedLink("menulist");
-                navigate("./menuList");
-              }}
-              style={{
-                cursor: "pointer",
-                fontWeight: selectedLink === "menulist" ? "bold" : "normal",
-              }}
-            >
-              Menu List
-            </Typography>
-            <Typography
-              onClick={() => {
-                setSelectedLink("history");
-                navigate("./history");
-              }}
-              style={{
-                cursor: "pointer",
-                marginLeft: "20px",
-                fontWeight: selectedLink === "history" ? "bold" : "normal",
-              }}
-            >
-              History
-            </Typography>
-            {/* <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link> */}
+            <>
+              {!userInfo && (
+                <Button
+                  variant="outlined"
+                  style={{
+                    margin: deviceType === "mobile" ? "20px 20px" : "initial",
+                  }}
+                  color="primary"
+                  onClick={() => {
+                    setSelectedLink("history");
+                    navigate("/login");
+                  }}
+                >
+                  I am Sonar
+                </Button>
+              )}
+            </>
+            {userInfo && (
+              <NavDropdown
+                title={<span>{userProfileVisibleLogic(userInfo?.name)}</span>}
+                id="username"
+              >
+                <LinkContainer to="/profile">
+                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/addProduct">
+                  <NavDropdown.Item>Add your product</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
