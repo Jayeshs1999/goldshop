@@ -6,7 +6,7 @@ import fisherYatesShuffle from "../routes/suffleBooks.js";
 //@route GET /api/products
 //@access Public
 const getProducts =asyncHandler( async (req,res)=>{
-    const pageSize = process.env.PAGINATION_LIMIT;
+    // const pageSize = process.env.PAGINATION_LIMIT;
     const page = Number(req.query.pageNumber) || 1;
 
     const category = req.query.category;
@@ -22,21 +22,28 @@ const getProducts =asyncHandler( async (req,res)=>{
     const count = await Product.countDocuments(filters);
     if(user) {
         const products = await Product.find(filters)
-        .limit(pageSize)
-        .skip(pageSize * (page - 1))
+        // .limit(pageSize)
+        // .skip(pageSize * (page - 1))
         .sort({ updatedAt: -1 });
 
-        res.json({products, page, pages: Math.ceil(count/pageSize)  });
+        res.json({
+            products,
+            // page,
+            // pages: Math.ceil(count / pageSize)
+        });
     }else {
         const products = await Product.find(filters)
-        .limit(pageSize)
-        .skip(pageSize * (page - 1))
+        // .limit(pageSize)
+        // .skip(pageSize * (page - 1))
         .lean() // Convert documents to plain JavaScript objects
 
     // Randomize the order of products using Fisher-Yates shuffle
     const randomizedProducts = fisherYatesShuffle(products);
 
-    res.json({products:randomizedProducts, page, pages: Math.ceil(count/pageSize)  });
+        res.json({
+            products: randomizedProducts,
+            // page, pages: Math.ceil(count / pageSize)
+        });
     }
 });
 
