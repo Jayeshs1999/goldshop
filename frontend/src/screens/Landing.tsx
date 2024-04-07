@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "../utils/Card";
 import { img1, img2 } from "../assets";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { useGetProductsQuery } from "../slices/productsAPISlice";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -52,18 +53,27 @@ const Landing = () => {
       subtitle: "This is a beautiful card with a fixed image.",
     },
   ];
+  const { pageNumber, keyword, categoryName } = useParams();
+  const { data, isLoading, error, isFetching } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+    categoryName,
+  });
+  console.log("data:",data)
   return (
     <div
       style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
     >
-      {goldArray.map((data) => (
+      {data?.products.map((data: any) => (
         <Card
           handleClick={() => {
-            navigate("/productDetail");
+            navigate(`/productDetail/${data?._id}`);
           }}
-          imageSrc={data?.imageSrc}
-          heading={data?.heading}
-          subtitle={data?.subtitle}
+          imageSrc={data?.image}
+          heading={data?.name}
+          subtitle={data?.price}
+          address={data?.address}
+          
         />
       ))}
     </div>

@@ -44,7 +44,7 @@ const ProductListScreen = () => {
   };
 
   const createProductHandler = async () => {
-    if (window.confirm("Are You sure you want to create a new product?")) {
+    if (window.confirm("Are You sure you want to create a new Jewellery?")) {
       try {
         setShowVerificationPopup(true);
       } catch (err) {
@@ -57,7 +57,7 @@ const ProductListScreen = () => {
     <>
       <Row className="align-items-center">
         <Col>
-          <h1>Add Jewellery</h1>
+          <h1>Your Jewellery</h1>
         </Col>
         <Col className="text-end">
           <Button className="btn-sm m-3" onClick={createProductHandler}>
@@ -102,8 +102,8 @@ const ProductListScreen = () => {
                     <th>ID</th>
                     <th>NAME</th>
                     <th>PRICE</th>
-                    <th>CATEGORY</th>
-                    <th>BRAND</th>
+                    {/* <th>CATEGORY</th>
+                    <th>BRAND</th> */}
                     <th>UPDATE</th>
                     <th>DELETE</th>
                   </tr>
@@ -114,8 +114,8 @@ const ProductListScreen = () => {
                       <td>{product._id}</td>
                       <td>{product.name}</td>
                       <td>{product.price}</td>
-                      <td>{product.category}</td>
-                      <td>{product.brand}</td>
+                      {/* <td>{product.category}</td>
+                      <td>{product.brand}</td> */}
                       <td>
                         <LinkContainer
                           to={`/admin/product/${product._id}/edit`}

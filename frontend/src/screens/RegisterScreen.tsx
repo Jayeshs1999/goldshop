@@ -24,6 +24,7 @@ const RegisterScreen = () => {
   const [verificationCode, setVerificationCode] = useState("");
   const [isVerificationCodeCorrect, setIsVerificationCodeCorrect] =
     useState(false);
+  const [address, setAddress] = useState("");
   const [isFormDateDisabled, setIsFormDateDisabled] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
@@ -44,13 +45,14 @@ const RegisterScreen = () => {
       password !== "" &&
       confirmPassword !== "" &&
       goldShopName !== "" &&
-      phoneNumber !== ""
+      phoneNumber !== "" &&
+      address !== ""
     ) {
       setIsFormDateDisabled(false);
     } else {
       setIsFormDateDisabled(true);
     }
-  }, [name, email, password, confirmPassword, goldShopName, phoneNumber]);
+  }, [name, email, password, confirmPassword, goldShopName, phoneNumber,address]);
 
   useEffect(() => {
     if (userInfo) {
@@ -58,64 +60,64 @@ const RegisterScreen = () => {
     }
   }, [userInfo, redirect, navigate]);
 
-  const submitHandler = async (e: any) => {
-    e.preventDefault();
+  // const submitHandler = async (e: any) => {
+  //   e.preventDefault();
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-    } else if (password.match(passwordPattern)) {
-      try {
-        setShowVerificationPopup(true);
+  //   if (password !== confirmPassword) {
+  //     toast.error("Passwords do not match");
+  //   } else if (password.match(passwordPattern)) {
+  //     try {
+  //       setShowVerificationPopup(true);
 
-        //encrypt id using private key
-        const otp = generateOTP();
-        const ciphertext = CryptoJS.AES.encrypt(
-          String(otp),
-          `${process.env.ENCRYPTION_KEY}`
-        ).toString();
-        localStorage.setItem("bookBucketId", ciphertext);
-        const otpSendSuccessfully = sendEmail({
-          name: name,
-          email: email,
-          senderName: "BookBucket",
-          titleMessage: "BookBucket Verify OTP",
-          message: "Please Verify OTP",
-          subMessage: "",
-          otp: otp,
-          currentDate: "",
-          paymentMethod: "",
-          shippingAddress: "",
-        });
-        if ((await otpSendSuccessfully).status) {
-          toast.success("OTP Sent Successfully");
-        }
-      } catch (error) {
-        console.log("error", error);
-      }
-    } else {
-      toast.error("Password must contain number,char, sybmol Ex. book&100");
-    }
-  };
+  //       //encrypt id using private key
+  //       const otp = generateOTP();
+  //       const ciphertext = CryptoJS.AES.encrypt(
+  //         String(otp),
+  //         `${process.env.ENCRYPTION_KEY}`
+  //       ).toString();
+  //       localStorage.setItem("bookBucketId", ciphertext);
+  //       const otpSendSuccessfully = sendEmail({
+  //         name: name,
+  //         email: email,
+  //         senderName: "BookBucket",
+  //         titleMessage: "BookBucket Verify OTP",
+  //         message: "Please Verify OTP",
+  //         subMessage: "",
+  //         otp: otp,
+  //         currentDate: "",
+  //         paymentMethod: "",
+  //         shippingAddress: "",
+  //       });
+  //       if ((await otpSendSuccessfully).status) {
+  //         toast.success("OTP Sent Successfully");
+  //       }
+  //     } catch (error) {
+  //       console.log("error", error);
+  //     }
+  //   } else {
+  //     toast.error("Password must contain number,char, sybmol Ex. book&100");
+  //   }
+  // };
 
   const handleCloseVerificationPopup = () => {
     setShowVerificationPopup(false);
     setIsVerificationCodeCorrect(false);
   };
 
-  const handleVerificationSubmit = async (e: any) => {
+  const submitHandler = async (e: any) => {
     e.preventDefault();
 
     //deycrypt id using private key
-    const bytes = CryptoJS.AES.decrypt(
-      String(localStorage.getItem("bookBucketId")),
-      `${process.env.ENCRYPTION_KEY}`
-    );
-    const originalKey = bytes.toString(CryptoJS.enc.Utf8);
+    // const bytes = CryptoJS.AES.decrypt(
+    //   String(localStorage.getItem("bookBucketId")),
+    //   `${process.env.ENCRYPTION_KEY}`
+    // );
+    // const originalKey = bytes.toString(CryptoJS.enc.Utf8);
 
     // Replace this with your verification logic
     // For this example, we assume the correct code is "1234"
-    if (verificationCode === originalKey) {
-      toast.success("OTP Verified Successfully!");
+    // if (verificationCode === originalKey) {
+      // toast.success("OTP Verified Successfully!");
       localStorage.removeItem("bookBucketId");
       setIsVerificationCodeCorrect(true);
       try {
@@ -125,6 +127,7 @@ const RegisterScreen = () => {
           password,
           goldShopName,
           phoneNumber,
+          address,
         }).unwrap();
         dispatch(setCredentials({ ...res }));
         toast.success("Register Successfully");
@@ -133,9 +136,9 @@ const RegisterScreen = () => {
         toast.error(error?.data?.message || error.error);
       }
       setShowVerificationPopup(false);
-    } else {
-      toast.error("OTP is not match");
-    }
+    // } else {
+    //   toast.error("OTP is not match");
+    // }
   };
 
   return (
@@ -179,12 +182,25 @@ const RegisterScreen = () => {
               <Form.Group controlId="phonenumber" className="my-2">
                 <Form.Label>Phone Number</Form.Label>
                 <PhoneInput
-                
                   defaultCountry="IN"
                   placeholder="Enter phone number"
                   value={phoneNumber}
                   onChange={(e: any) => {
                     setPhoneNumber(e);
+                  }}
+                />
+              </Form.Group>
+             
+              <Form.Group className="mb-3" controlId="address">
+                <Form.Label>Address</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={address}
+                  placeholder="Enter your jewellery shop full address"
+                  onChange={(e: any) => {
+                    console.log("e :",e.target.value)
+                    setAddress(e.target.value);
                   }}
                 />
               </Form.Group>
@@ -231,7 +247,7 @@ const RegisterScreen = () => {
           </Row>
         </Card>
       </FormContainer>
-      <Modal
+      {/* <Modal
         show={showVerificationPopup}
         onHide={handleCloseVerificationPopup}
         backdrop="static" // This prevents closing when clicking outside the modal
@@ -265,7 +281,7 @@ const RegisterScreen = () => {
             </>
           )}
         </Modal.Body>
-      </Modal>
+      </Modal> */}
     </>
   );
 };

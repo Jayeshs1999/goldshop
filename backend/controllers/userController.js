@@ -69,7 +69,8 @@ const forgetPassword = asyncHandler(async (req,res) =>{
 //@access Public
 const registerUser = asyncHandler(async (req, res) => {
     console.log("req.body :", req.body);
-    const { name, email, password, goldShopName, phoneNumber } = req.body;
+    const { name, email, password, goldShopName, phoneNumber, address } =
+      req.body;
 
     const userExists = await User.findOne({email});
     if(userExists) {
@@ -82,19 +83,21 @@ const registerUser = asyncHandler(async (req, res) => {
       goldShopName,
       password,
       phoneNumber,
+      address,
     });
 
     if(user) {
         generateToken(res, user._id);
 
         res.status(201).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            goldShopName: user.goldShopName,
-            isAdmin: user.isAdmin,
-            phoneNumber: user.phoneNumber
-        })
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          goldShopName: user.goldShopName,
+          isAdmin: user.isAdmin,
+          phoneNumber: user.phoneNumber,
+          address: user.address,
+        });
     }else {
         res.status(400);
         throw new Error('Invalid user data')
