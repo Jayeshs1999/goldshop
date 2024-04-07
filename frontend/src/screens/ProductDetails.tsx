@@ -80,7 +80,13 @@ const ProductDetail = ({ image, title, description, price }: any) => {
   }
   console.log("data:",products)
   return (
-    <>
+    <div
+      style={
+        {
+          padding:"20px",
+        }
+      }
+    >
       <Link to={"/"} className="btn btn-light my-3">
         Go Back to home
       </Link>
@@ -138,7 +144,7 @@ const ProductDetail = ({ image, title, description, price }: any) => {
           Comming Soon
         </h1>
       </div>
-    </>
+    </div>
   );
 };
 

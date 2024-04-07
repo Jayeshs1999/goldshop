@@ -54,7 +54,11 @@ const ProductListScreen = () => {
   };
 
   return (
-    <>
+    <div
+      style={{
+        padding: "20px",
+      }}
+    >
       <Row className="align-items-center">
         <Col>
           <h1>Your Jewellery</h1>
@@ -146,7 +150,7 @@ const ProductListScreen = () => {
       {showVerificationPopup && (
         <AddProducts handleDialog={() => setShowVerificationPopup(false)} />
       )}
-    </>
+    </div>
   );
 };
 

@@ -65,24 +65,23 @@ const Landing = () => {
   return (
     <div
       style={{
-        display: deviceType==='mobile'? 'grid':'flex',
-        gridTemplateColumns: deviceType==='mobile'?  '1fr 1fr':'',
-        flexWrap: deviceType === 'mobile' ? "initial" : "wrap",
-        justifyContent: deviceType === 'mobile' ? "" : "center",
-        
+        display: deviceType === "mobile" ? "grid" : "flex",
+        gridTemplateColumns: deviceType === "mobile" ? "1fr 1fr" : "",
+        flexWrap: deviceType === "mobile" ? "initial" : "wrap",
+        justifyContent: deviceType === "mobile" ? "" : "center",
+        padding: deviceType==='mobile'? '6px' :"20px",
       }}
     >
       {data?.products.map((data: any) => (
         <Card
           handleClick={() => {
-            window.scroll(0,0)
+            window.scroll(0, 0);
             navigate(`/productDetail/${data?._id}`);
           }}
           imageSrc={data?.image}
           heading={data?.name}
           subtitle={data?.price}
           address={data?.address}
-          
         />
       ))}
     </div>

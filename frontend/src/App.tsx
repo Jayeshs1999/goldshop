@@ -13,7 +13,7 @@ const App = () => {
         style={{
           height: "calc(100vh - 173px)",
           overflow: "auto",
-          padding: "20px",
+          // padding: deviceType==='mobile'? '6px' :"20px",
         }}
       >
         <Outlet />
