@@ -69,7 +69,7 @@ const forgetPassword = asyncHandler(async (req,res) =>{
 //@access Public
 const registerUser = asyncHandler(async (req, res) => {
     console.log("req.body :", req.body);
-    const { name, email, password, goldShopName } = req.body;
+    const { name, email, password, goldShopName, phoneNumber } = req.body;
 
     const userExists = await User.findOne({email});
     if(userExists) {
@@ -77,10 +77,11 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error('User already exists')
     }
     const user = await User.create({
-        name,
-        email,
-        goldShopName,
-        password
+      name,
+      email,
+      goldShopName,
+      password,
+      phoneNumber,
     });
 
     if(user) {
@@ -91,7 +92,8 @@ const registerUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             goldShopName: user.goldShopName,
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
+            phoneNumber: user.phoneNumber
         })
     }else {
         res.status(400);

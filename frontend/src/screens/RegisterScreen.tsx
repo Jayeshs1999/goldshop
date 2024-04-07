@@ -10,10 +10,13 @@ import Loader from "../components/Loader";
 import generateOTP from "../utils/generateOtp";
 import CryptoJS from "crypto-js";
 import sendEmail from "../utils/sendEmail";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
-  ;
+  
+   const [phoneNumber, setPhoneNumber] = useState<any>("");
   const [goldShopName, setGoldShopName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,12 +38,19 @@ const RegisterScreen = () => {
   const passwordPattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{8,}$/;
 
   useEffect(() => {
-    if (email !== "" && name !== "" && password !== "" && confirmPassword !== "" && goldShopName!=="") {
+    if (
+      email !== "" &&
+      name !== "" &&
+      password !== "" &&
+      confirmPassword !== "" &&
+      goldShopName !== "" &&
+      phoneNumber !== ""
+    ) {
       setIsFormDateDisabled(false);
     } else {
       setIsFormDateDisabled(true);
     }
-  }, [name, email, password, confirmPassword,goldShopName]);
+  }, [name, email, password, confirmPassword, goldShopName, phoneNumber]);
 
   useEffect(() => {
     if (userInfo) {
@@ -114,6 +124,7 @@ const RegisterScreen = () => {
           email,
           password,
           goldShopName,
+          phoneNumber,
         }).unwrap();
         dispatch(setCredentials({ ...res }));
         toast.success("Register Successfully");
@@ -165,6 +176,18 @@ const RegisterScreen = () => {
                   onChange={(e) => setGoldShopName(e.target.value)}
                 ></Form.Control>
               </FormGroup>
+              <Form.Group controlId="phonenumber" className="my-2">
+                <Form.Label>Phone Number</Form.Label>
+                <PhoneInput
+                
+                  defaultCountry="IN"
+                  placeholder="Enter phone number"
+                  value={phoneNumber}
+                  onChange={(e: any) => {
+                    setPhoneNumber(e);
+                  }}
+                />
+              </Form.Group>
 
               <FormGroup controlId="password" className="my-3">
                 <Form.Label>Password</Form.Label>
