@@ -5,9 +5,10 @@ import { useNavigate, useParams } from "react-router";
 import Card from "../utils/Card";
 import { useGetProductDetailsQuery } from "../slices/productsAPISlice";
 import { Link } from "react-router-dom";
+import useDeviceType from "../utils/DeviceType";
 
 const ProductDetail = ({ image, title, description, price }: any) => {
-  const navigate = useNavigate();
+  const deviceType = useDeviceType();
   const { id: productId } = useParams();
   // const product = {
   //   image: "product-image-url.jpg",
@@ -49,6 +50,34 @@ const ProductDetail = ({ image, title, description, price }: any) => {
       refetch,
       error,
     } = useGetProductDetailsQuery(productId);
+  
+  const buttonAndPrice = () => {
+    return <div >
+     
+        <p>Price: Rs. {products?.price}</p>
+        <div style={{ display: "flex", gap: "20px",justifyContent:'center',marginBottom:'20px' }}>
+          <Button
+            onClick={handleInquiry}
+            variant="contained"
+            color="error"
+            style={{ fontWeight: "bold" }}
+          >
+            Inquiry Now
+          </Button>
+          <Button
+            onClick={() => {
+              window.open(`tel:${products?.phoneNumber}`);
+            }}
+            variant="contained"
+            color="primary"
+            style={{ fontWeight: "bold" }}
+          >
+            Call Now
+          </Button>
+        </div>
+     
+    </div>
+  }
   console.log("data:",products)
   return (
     <>
@@ -59,41 +88,27 @@ const ProductDetail = ({ image, title, description, price }: any) => {
         style={{
           display: "flex",
           gap: "26px",
+          flexDirection: deviceType === "mobile" ? "column" : "row",
           // background: "linear-gradient(45deg, black, transparent)",
         }}
         className="product-detail"
       >
-        <div style={{ width: "40%" }}>
+        <div style={{ width: deviceType === "mobile" ? "100%" : "40%" }}>
           <img
-            style={{ width: "100%", height: "380px", objectFit: "fill" }}
+            style={{
+              width: "100%",
+              height: deviceType === "mobile" ? "250px" : "380px",
+              objectFit: "fill",
+            }}
             src={products?.image}
             alt={products?.name}
           />
         </div>
-        <div style={{ width: "60%" }}>
+        <div style={{ width: deviceType === "mobile" ? "100%" : "60%" }}>
           <h2>{products?.name}</h2>
-          <p>{products?.description}</p>
-          <p>Price: Rs. {products?.price}</p>
-          <div style={{ display: "flex", gap: "20px" }}>
-            <Button
-              onClick={handleInquiry}
-              variant="contained"
-              color="error"
-              style={{ fontWeight: "bold" }}
-            >
-              Inquiry Now
-            </Button>
-            <Button
-              onClick={() => {
-                window.open(`tel:${products?.phoneNumber}`);
-              }}
-              variant="contained"
-              color="primary"
-              style={{ fontWeight: "bold" }}
-            >
-              Call Now
-            </Button>
-          </div>
+          {deviceType === "mobile" && buttonAndPrice()}
+          <p style={{ wordBreak: "break-word" }}>{products?.description}</p>
+          {deviceType !== "mobile" && buttonAndPrice()}
 
           {/* <button onClick={handleInquiry}>Get Inquiry</button> */}
         </div>

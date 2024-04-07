@@ -67,6 +67,7 @@ const Landing = () => {
       {data?.products.map((data: any) => (
         <Card
           handleClick={() => {
+            window.scroll(0,0)
             navigate(`/productDetail/${data?._id}`);
           }}
           imageSrc={data?.image}
