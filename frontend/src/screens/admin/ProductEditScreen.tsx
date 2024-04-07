@@ -38,7 +38,7 @@ const ProductEditScreen = () => {
     userInfo.isAdmin ? "+918888585093" : ""
   );
   const [showButtonDisable, setShowButtonDisabled] = useState(true);
-  const [bookType, setBookType] = useState("New Book");
+  const [shopName, setShopName] = useState("");
 
   const {
     data: product,
@@ -60,8 +60,9 @@ const ProductEditScreen = () => {
       setCountInStock(product.countInStock);
       setDescription(product.description);
       setAddress(product.address);
-      setBookType(product.bookType);
+      // setBookType(product.bookType);
       setPhoneNumber(product.phoneNumber);
+      setShopName(product.shopName);
     }
   }, [product]);
 
@@ -69,13 +70,14 @@ const ProductEditScreen = () => {
     if (
       name !== "" &&
       price > 0 &&
-      brand !== "" &&
-      countInStock > 0 &&
+      // brand !== "" &&
+      // countInStock > 0 &&
       description !== "" &&
-      category !== "" &&
+      // category !== "" &&
       image !== "" &&
       address !== "" &&
-      bookType !== "" &&
+      shopName!=="" &&
+      // bookType !== "" &&
       phoneNumber !== undefined
     ) {
       setShowButtonDisabled(false);
@@ -85,14 +87,15 @@ const ProductEditScreen = () => {
   }, [
     name,
     price,
-    brand,
-    countInStock,
+    // brand,
+    // countInStock,
     description,
-    category,
+    // category,
     image,
     address,
     phoneNumber,
-    bookType,
+    shopName
+    // bookType,
   ]);
 
   function hasError(
@@ -106,15 +109,16 @@ const ProductEditScreen = () => {
     const updatedProduct = {
       _id: productId,
       name,
-      price: price + (userInfo.isAdmin ? 0 : 50),
+      price: price,
       image: imageURL || image,
-      brand,
-      category,
-      countInStock,
+      // brand,
+      // category,
+      // countInStock,
       description,
       phoneNumber,
       address,
-      bookType,
+      shopName
+      // bookType,
     };
 
     if (phoneNumber.length === 13) {
@@ -183,7 +187,7 @@ const ProductEditScreen = () => {
                 onChange={(e) => setPrice(Number(e.target.value))}
               ></Form.Control>
             </Form.Group>
-            {!userInfo.isAdmin && (
+            {/* {!userInfo.isAdmin && (
               <>
                 <span style={{ color: "red" }}>
                   <strong>Please Note:</strong>{" "}
@@ -200,7 +204,7 @@ const ProductEditScreen = () => {
                   </span>
                 </div>
               </>
-            )}
+            )} */}
             {/* {Image input } */}
 
             <Form.Group controlId="image" className="my-2">
@@ -220,7 +224,7 @@ const ProductEditScreen = () => {
             </Form.Group>
             {loader && <Loader />}
 
-            <Form.Group controlId="brand" className="my-2">
+            {/* <Form.Group controlId="brand" className="my-2">
               <Form.Label>Author's Name</Form.Label>
               <Form.Control
                 type="text"
@@ -228,9 +232,9 @@ const ProductEditScreen = () => {
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
-            </Form.Group>
+            </Form.Group> */}
 
-            <Form.Group controlId="countinstock" className="my-2">
+            {/* <Form.Group controlId="countinstock" className="my-2">
               <Form.Label>Count In Stock</Form.Label>
               <Form.Control
                 type="number"
@@ -238,9 +242,9 @@ const ProductEditScreen = () => {
                 value={countInStock}
                 onChange={(e) => setCountInStock(Number(e.target.value))}
               ></Form.Control>
-            </Form.Group>
+            </Form.Group> */}
 
-            <Form.Group controlId="category" className="my-2">
+            {/* <Form.Group controlId="category" className="my-2">
               <Form.Label>Select Category</Form.Label>
               <Form.Control
                 as="select"
@@ -253,9 +257,9 @@ const ProductEditScreen = () => {
                   </option>
                 ))}
               </Form.Control>
-            </Form.Group>
+            </Form.Group> */}
 
-            <Form.Group controlId="booktype" className="my-2">
+            {/* <Form.Group controlId="booktype" className="my-2">
               <Form.Label>Book Type</Form.Label>
               <Form.Control
                 as="select"
@@ -268,7 +272,7 @@ const ProductEditScreen = () => {
                   </option>
                 ))}
               </Form.Control>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group controlId="description" className="my-2">
               <Form.Label>Description</Form.Label>
@@ -295,8 +299,17 @@ const ProductEditScreen = () => {
                 }}
               />
             </Form.Group>
+            <Form.Group controlId="shopName" className="my-2">
+              <Form.Label>Jewellery Shop Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter shop name"
+                value={shopName}
+                onChange={(e) => setShopName(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
             <Form.Group controlId="address" className="my-3">
-              <Form.Label>Pickup Address</Form.Label>
+              <Form.Label>Address</Form.Label>
               <Form.Control
                 readOnly={userInfo.isAdmin}
                 as="textarea" // Set "as" prop to "textarea"

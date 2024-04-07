@@ -15,11 +15,13 @@ const authUser =asyncHandler( async (req,res)=>{
         generateToken(res, user._id);
 
         res.status(200).json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin
-        })
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          isAdmin: user.isAdmin,
+          goldShopName: user.goldShopName,
+          address:user.goldShopName,
+        });
     }else {
         res.status(401);
         throw new Error('Invalid email or password')

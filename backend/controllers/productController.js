@@ -22,21 +22,27 @@ const getProducts =asyncHandler( async (req,res)=>{
     const count = await Product.countDocuments(filters);
     if(user) {
         const products = await Product.find(filters)
-        .limit(pageSize)
-        .skip(pageSize * (page - 1))
+        // .limit(pageSize)
+        // .skip(pageSize * (page - 1))
         .sort({ updatedAt: -1 });
 
-        res.json({products, page, pages: Math.ceil(count/pageSize)  });
+        res.json({
+            products,
+            // page, pages: Math.ceil(count / pageSize)
+        });
     }else {
         const products = await Product.find(filters)
-        .limit(pageSize)
-        .skip(pageSize * (page - 1))
+        // .limit(pageSize)
+        // .skip(pageSize * (page - 1))
         .lean() // Convert documents to plain JavaScript objects
 
     // Randomize the order of products using Fisher-Yates shuffle
     const randomizedProducts = fisherYatesShuffle(products);
 
-    res.json({products:randomizedProducts, page, pages: Math.ceil(count/pageSize)  });
+        res.json({
+            products: randomizedProducts,
+            // page, pages: Math.ceil(count / pageSize)
+        });
     }
 });
 
@@ -59,33 +65,37 @@ const getProductsById =asyncHandler( async (req,res)=>{
 //@route POST /api/products
 //@access Private/Admin
 const createProduct =asyncHandler( async (req,res)=>{
-    const  {
-        name, 
-        price, 
-        description, 
-        image, 
-        // brand,
-        // category,
-        // countInStock,
-        address,
-        phoneNumber,
-        // bookType
+    const {
+      name,
+      price,
+      description,
+      image,
+      // brand,
+      // category,
+      // countInStock,
+      address,
+      phoneNumber,
+      // bookType
+      shopName,
     } = req.body;
     
     const product = new Product({
-        name: name,
-        price: price,
-        user: req.user._id,
-        image: image? image : 'https://firebasestorage.googleapis.com/v0/b/bookbucket-5253e.appspot.com/o/images%2F26690.jpg?alt=media&token=91f701e4-4f9f-4552-9c40-fdc86f9e3f66&_gl=1*5qo2th*_ga*MzcyMzM2MzI5LjE2OTI0NTY4ODU.*_ga_CW55HF8NVT*MTY5NzYyOTIzMy4yNC4xLjE2OTc2MjkyNjguMjUuMC4w',
-        // brand: brand,
-        // category: category,
-        // countInStock: countInStock,
-        // numReviews: 0,
-        description: description,
-        address: address,
-        phoneNumber: phoneNumber,
-        // bookType: bookType
-    })
+      name: name,
+      price: price,
+      user: req.user._id,
+      image: image
+        ? image
+        : "https://firebasestorage.googleapis.com/v0/b/bookbucket-5253e.appspot.com/o/images%2F26690.jpg?alt=media&token=91f701e4-4f9f-4552-9c40-fdc86f9e3f66&_gl=1*5qo2th*_ga*MzcyMzM2MzI5LjE2OTI0NTY4ODU.*_ga_CW55HF8NVT*MTY5NzYyOTIzMy4yNC4xLjE2OTc2MjkyNjguMjUuMC4w",
+      // brand: brand,
+      // category: category,
+      // countInStock: countInStock,
+      // numReviews: 0,
+      description: description,
+      address: address,
+      phoneNumber: phoneNumber,
+      shopName: shopName,
+      // bookType: bookType
+    });
 
     const createProduct = await product.save();
     res.status(201).json(createProduct)
@@ -96,16 +106,18 @@ const createProduct =asyncHandler( async (req,res)=>{
 //@route PUT /api/products/:id
 //@access Private/admin
 const updateProduct =asyncHandler( async (req,res)=>{
-    const  {
-        name, 
-        price, 
-        description, 
-        image, brand,
-        category,
-        countInStock,
-        address,
-        phoneNumber,
-        bookType
+    const {
+      name,
+      price,
+      description,
+      image,
+      // brand,
+      // category,
+      // countInStock,
+      address,
+      phoneNumber,
+      shopName,
+      // bookType
     } = req.body;
 
     const product = await Product.findById(req.params.id);
@@ -114,12 +126,13 @@ const updateProduct =asyncHandler( async (req,res)=>{
         product.price = price;
         product.description = description;
         product.image = image;
-        product.brand = brand;
-        product.category = category;
-        product.countInStock = countInStock;
+        // product.brand = brand;
+        // product.category = category;
+        // product.countInStock = countInStock;
         product.address = address,
         product.phoneNumber = phoneNumber
-        product.bookType = bookType
+        product.shopName = shopName
+        // product.bookType = bookType
 
         const updateProduct =await product.save();
         res.json(updateProduct);

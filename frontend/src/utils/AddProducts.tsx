@@ -13,17 +13,18 @@ import { useSelector } from "react-redux";
 const AddProducts = (props: any) => {
   const { userInfo } = useSelector((state: any) => state.auth);
   const prevProductLocation = localStorage.getItem("product_added_location");
+  const prevShopName = localStorage.getItem("product_added_shopName");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
-  const [brand, setBrand] = useState("");
+  const [shopName, setShopName] = useState( userInfo ? userInfo?.goldShopName : prevShopName ? prevShopName : "");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
   const [phoneNumber, setPhoneNumber] = useState<any>(
     userInfo.isAdmin ? "+918888585093" : ""
   );
   const [address, setAddress] = useState(
-    userInfo.isAdmin ? "Self" : prevProductLocation ? prevProductLocation : ""
+    userInfo ? userInfo?.address : prevProductLocation ? prevProductLocation : ""
   );
   const [bookType, setBookType] = useState("New Book");
   const [loader, setLoader] = useState(false);
@@ -45,7 +46,7 @@ const AddProducts = (props: any) => {
       // category !== "" &&
       image !== "" &&
       address !== "" &&
-      // bookType !== "" &&
+      shopName !== "" &&
       phoneNumber !== undefined
     ) {
       setShowButtonDisabled(false);
@@ -62,6 +63,7 @@ const AddProducts = (props: any) => {
     image,
     address,
     phoneNumber,
+    shopName
     // bookType,
   ]);
 
@@ -95,9 +97,11 @@ const AddProducts = (props: any) => {
       description,
       address,
       phoneNumber,
+      shopName
       // bookType,
     };
     localStorage.setItem("product_added_location", address);
+    localStorage.setItem("product_added_shopName", shopName);
 
     if (phoneNumber.length === 13) {
       const result = await createProduct(updatedProduct);
@@ -186,6 +190,16 @@ const AddProducts = (props: any) => {
                   setPhoneNumber(e);
                 }}
               />
+            </Form.Group>
+
+            <Form.Group controlId="shopName" className="my-2">
+              <Form.Label>Jewellery Shop Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter shop name"
+                value={shopName}
+                onChange={(e) => setShopName(e.target.value)}
+              ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="address" className="my-3">

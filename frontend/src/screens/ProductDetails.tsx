@@ -6,6 +6,8 @@ import Card from "../utils/Card";
 import { useGetProductDetailsQuery } from "../slices/productsAPISlice";
 import { Link } from "react-router-dom";
 import useDeviceType from "../utils/DeviceType";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const ProductDetail = ({ image, title, description, price }: any) => {
   const deviceType = useDeviceType();
@@ -52,10 +54,20 @@ const ProductDetail = ({ image, title, description, price }: any) => {
     } = useGetProductDetailsQuery(productId);
   
   const buttonAndPrice = () => {
-    return <div >
-     
+    return (
+      <div>
         <p>Price: Rs. {products?.price}</p>
-        <div style={{ display: "flex", gap: "20px",justifyContent:deviceType==='mobile'? 'center': 'start',marginBottom:'20px' }}>
+        <p>
+          Shop Name: <span style={{color:'red', fontSize:'20px'}}>{products?.shopName}</span>
+        </p>
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: deviceType === "mobile" ? "center" : "start",
+            marginBottom: "20px",
+          }}
+        >
           <Button
             onClick={handleInquiry}
             variant="contained"
@@ -75,53 +87,61 @@ const ProductDetail = ({ image, title, description, price }: any) => {
             Call Now
           </Button>
         </div>
-     
-    </div>
+      </div>
+    );
   }
   console.log("data:",products)
   return (
     <div
-      style={
-        {
-          padding:"20px",
-        }
-      }
+      style={{
+        padding: "20px",
+      }}
     >
       <Link to={"/"} className="btn btn-light my-3">
         Go Back to home
       </Link>
-      <div
-        style={{
-          display: "flex",
-          gap: "26px",
-          flexDirection: deviceType === "mobile" ? "column" : "row",
-          // background: "linear-gradient(45deg, black, transparent)",
-        }}
-        className="product-detail"
-      >
-        <div style={{ width: deviceType === "mobile" ? "100%" : "40%" }}>
-          <img
+      {isLoading ? (
+        <div style={{ marginTop: "5%" }}>
+          <Loader />
+        </div>
+      ) : error ? (
+        <Message variant="danger">
+          something_went_wrong_please_refresh_the_page
+        </Message>
+      ) : (
+        <>
+          <div
             style={{
-              width: "100%",
-              height: deviceType === "mobile" ? "250px" : "380px",
-              objectFit: "fill",
+              display: "flex",
+              gap: "26px",
+              flexDirection: deviceType === "mobile" ? "column" : "row",
+              // background: "linear-gradient(45deg, black, transparent)",
             }}
-            src={products?.image}
-            alt={products?.name}
-          />
-        </div>
-        <div style={{ width: deviceType === "mobile" ? "100%" : "60%" }}>
-          <h2>{products?.name}</h2>
-          {deviceType === "mobile" && buttonAndPrice()}
-          <p style={{ wordBreak: "break-word" }}>{products?.description}</p>
-          {deviceType !== "mobile" && buttonAndPrice()}
+            className="product-detail"
+          >
+            <div style={{ width: deviceType === "mobile" ? "100%" : "40%" }}>
+              <img
+                style={{
+                  width: "100%",
+                  height: deviceType === "mobile" ? "250px" : "380px",
+                  objectFit: "fill",
+                }}
+                src={products?.image}
+                alt={products?.name}
+              />
+            </div>
+            <div style={{ width: deviceType === "mobile" ? "100%" : "60%" }}>
+              <h2>{products?.name}</h2>
+              {deviceType === "mobile" && buttonAndPrice()}
+              <p style={{ wordBreak: "break-word" }}>{products?.description}</p>
+              {deviceType !== "mobile" && buttonAndPrice()}
 
-          {/* <button onClick={handleInquiry}>Get Inquiry</button> */}
-        </div>
-      </div>
-      <div style={{ marginTop: "20px" }}>
-        <h2>Related Products</h2>
-        {/* <div
+              {/* <button onClick={handleInquiry}>Get Inquiry</button> */}
+            </div>
+          </div>
+          <div style={{ marginTop: "20px" }}>
+            <h2>Related Products</h2>
+            {/* <div
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -140,10 +160,14 @@ const ProductDetail = ({ image, title, description, price }: any) => {
             />
           ))}
         </div> */}
-        <h1 style={{ textAlign: "center", marginTop: "50px", color: "green" }}>
-          Comming Soon
-        </h1>
-      </div>
+            <h1
+              style={{ textAlign: "center", marginTop: "50px", color: "green" }}
+            >
+              Comming Soon
+            </h1>
+          </div>
+        </>
+      )}
     </div>
   );
 };

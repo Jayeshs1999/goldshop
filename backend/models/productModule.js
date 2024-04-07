@@ -23,20 +23,21 @@ const reviewSchema = mongoose.Schema({
     timestamps:true
 })
 
-const productSchema =new mongoose.Schema({
+const productSchema = new mongoose.Schema(
+  {
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
 
     image: {
-        type:String,
-        required: true
+      type: String,
+      required: true,
     },
     // brand: {
     //     type:String,
@@ -47,8 +48,8 @@ const productSchema =new mongoose.Schema({
     //     required: true
     // },
     description: {
-        type:String,
-        required: true
+      type: String,
+      required: true,
     },
     // reviews: [reviewSchema],
 
@@ -63,9 +64,9 @@ const productSchema =new mongoose.Schema({
     //     default: 0
     // },
     price: {
-        type:Number,
-        required: true,
-        default: 0
+      type: Number,
+      required: true,
+      default: 0,
     },
     // countInStock: {
     //     type:Number,
@@ -73,21 +74,26 @@ const productSchema =new mongoose.Schema({
     //     default: 0
     // },
     address: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     phoneNumber: {
-        type:String,
-        required: true,
+      type: String,
+      required: true,
     },
     // bookType: {
     //     type:String,
     //     required: true,
     // }
-
-}, {
-    timestamps:true
-});
+    shopName: {
+        type:String,
+        required: true,
+    }
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Product = mongoose.model("Product", productSchema)
 
