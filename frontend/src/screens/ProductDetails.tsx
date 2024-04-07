@@ -55,7 +55,7 @@ const ProductDetail = ({ image, title, description, price }: any) => {
     return <div >
      
         <p>Price: Rs. {products?.price}</p>
-        <div style={{ display: "flex", gap: "20px",justifyContent:'center',marginBottom:'20px' }}>
+        <div style={{ display: "flex", gap: "20px",justifyContent:deviceType==='mobile'? 'center': 'start',marginBottom:'20px' }}>
           <Button
             onClick={handleInquiry}
             variant="contained"

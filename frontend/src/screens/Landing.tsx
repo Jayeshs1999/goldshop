@@ -3,8 +3,10 @@ import Card from "../utils/Card";
 import { img1, img2 } from "../assets";
 import { useNavigate, useParams } from "react-router";
 import { useGetProductsQuery } from "../slices/productsAPISlice";
+import useDeviceType from "../utils/DeviceType";
 
 const Landing = () => {
+  const deviceType = useDeviceType();
   const navigate = useNavigate();
   const goldArray = [
     {
@@ -62,7 +64,13 @@ const Landing = () => {
   console.log("data:",data)
   return (
     <div
-      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+      style={{
+        display: deviceType==='mobile'? 'grid':'flex',
+        gridTemplateColumns: deviceType==='mobile'?  '1fr 1fr':'',
+        flexWrap: deviceType === 'mobile' ? "initial" : "wrap",
+        justifyContent: deviceType === 'mobile' ? "" : "center",
+        
+      }}
     >
       {data?.products.map((data: any) => (
         <Card

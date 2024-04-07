@@ -1,10 +1,10 @@
 .gold-card {
-  width: 300px;
+  /* width: 300px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
-  margin: 20px;
+  margin: 20px; */
 }
 
 .gold-card:hover {
@@ -12,9 +12,9 @@
 }
 
 .gold-card-image {
-  width: 100%;
+  /* width: 100%;
   height: 200px;
-  object-fit: fill;
+  object-fit: fill; */
 }
 
 .gold-card-content {
@@ -22,13 +22,13 @@
 }
 
 .gold-card-heading {
-  margin: 0;
+  /* margin: 0;
   font-size: 24px;
-  color: #333;
+  color: #333; */
 }
 
 .gold-card-subtitle {
-  margin-top: 5px;
-  font-size: 16px;
+  /* margin-top: 5px;
+  font-size: 16px; */
   color: #666;
 }
