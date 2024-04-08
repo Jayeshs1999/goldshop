@@ -34,7 +34,7 @@ const Landing = () => {
           <div
             style={{
               position: "absolute",
-              bottom: deviceType==='mobile'?'66px': "80px",
+              bottom: deviceType==='mobile'?'12px': "75px",
               left: "50%", // Use left: 50% to position the element relative to its parent
               transform: "translateX(-50%)", // Use transform to center the element horizontally
             }}
