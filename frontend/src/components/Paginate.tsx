@@ -1,6 +1,8 @@
 import React from "react";
 import { Pagination } from "react-bootstrap";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
+import './Pagination.css';
 
 interface PaginationProps {
   comesFrom: string;
@@ -29,16 +31,16 @@ const Paginate = ({
   const generateTo = (x:any) => {
     if (!isAdmin) {
       if (keyword) {
-        return `/search/${keyword}/page/${x + 1}`;
+        return `/search/${keyword}/page/${x}`;
       } else if (category) {
-        return `/category/${category}/page/${x + 1}`;
+        return `/category/${category}/page/${x}`;
       } else if(comesFrom) {
-        return `/${comesFrom}/${x + 1}`;
+        return `/${comesFrom}/${x}`;
       } else {
-        return `/page/${x + 1}`;
+        return `/page/${x}`;
       }
     } else {
-      return `/admin/${comesFrom}/${x + 1}`;
+      return `/admin/${comesFrom}/${x}`;
     }
   };
 
@@ -46,17 +48,43 @@ const Paginate = ({
     <>
       {pages > 1 && (
         <Pagination>
-          {[...Array(pages).keys()].map((x: number) => (
-            <LinkContainer
-              key={x + 1}
-              to={
-                generateTo(x)
-              }
-              onClick={scrollToTop}
-            >
-              <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
+          {page > 1 ? (
+            <LinkContainer to={generateTo(page - 1)} onClick={scrollToTop}>
+              <Pagination.Prev
+            
+                className="custom-pagination-btn"
+              >
+                {/* <FaChevronLeft /> */}
+                Prev
+              </Pagination.Prev>
             </LinkContainer>
-          ))}
+          ) : (
+            <LinkContainer to={""}>
+              <Pagination.Prev
+               
+                className="custom-pagination-btn"
+              >
+                {/* <FaChevronLeft /> */}
+                Prev
+              </Pagination.Prev>
+            </LinkContainer>
+          )}
+
+          {page < pages ? (
+            <LinkContainer to={generateTo(page + 1)} onClick={scrollToTop}>
+              <Pagination.Next className="custom-pagination-btn">
+                Next
+                {/* <FaChevronRight /> */}
+              </Pagination.Next>
+            </LinkContainer>
+          ) : (
+            <LinkContainer to={""}>
+              <Pagination.Next className="custom-pagination-btn">
+                Next
+                {/* <FaChevronRight /> */}
+              </Pagination.Next>
+            </LinkContainer>
+          )}
         </Pagination>
       )}
     </>

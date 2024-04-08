@@ -79,7 +79,8 @@ export function userProfileVisibleLogic(name: string) {
   const a = name?.split(" ");
   const userName = a
     ?.map((data) => {
-      return data?.charAt(0);
+      // return data?.charAt(0);
+      return data;
     })
     .join();
   return userName?.replace(",", "");

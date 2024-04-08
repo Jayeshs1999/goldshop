@@ -72,7 +72,9 @@ const Header = () => {
             </>
             {userInfo && (
               <NavDropdown
-                title={<span>{userProfileVisibleLogic(userInfo?.name)}</span>}
+                style={{marginTop:deviceType==='mobile'? '10px':'initial'}}
+                // title={<span>{userProfileVisibleLogic(userInfo?.name)}</span>}
+                title={<span>{userInfo?.name}</span>}
                 id="username"
               >
                 <LinkContainer to="/profile">

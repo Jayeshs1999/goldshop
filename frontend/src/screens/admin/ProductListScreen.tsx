@@ -53,6 +53,14 @@ const ProductListScreen = () => {
     }
   };
 
+
+  // Filter products based on the logged-in user's ID
+  const userProducts = data?.products?.filter(
+    (product: any) => product?.user === userInfo?._id
+  );
+
+  console.log("userProducts :", userProducts);
+
   return (
     <div
       style={{
@@ -82,7 +90,7 @@ const ProductListScreen = () => {
           <Link to={"/"} className="btn btn-light my-3">
             Go Back to home
           </Link>
-          {data.products.length === 0 ? (
+          {userProducts?.length === 0 ? (
             <div
               style={{
                 display: "flex",
@@ -113,7 +121,7 @@ const ProductListScreen = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.products.map((product: any) => (
+                  {userProducts.map((product: any) => (
                     <tr key={product._id}>
                       <td>{product._id}</td>
                       <td>{product.name}</td>

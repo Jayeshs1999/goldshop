@@ -11,53 +11,7 @@ import Message from "../components/Message";
 const Landing = () => {
   const deviceType = useDeviceType();
   const navigate = useNavigate();
-  const goldArray = [
-    {
-      imageSrc: img1,
-      heading: "Ring",
-      subtitle: "Starting from 760000",
-    },
-    {
-      imageSrc: img2,
-      heading: "Gold Phone",
-      subtitle: "Starting from 760000",
-    },
-    {
-      imageSrc: img1,
-      heading: "Gold Laptop",
-      subtitle: "Starting from 760000",
-    },
-    {
-      imageSrc: img2,
-      heading: "Watch",
-      subtitle: "Starting from 30000",
-    },
-    {
-      imageSrc: img1,
-      heading: "Table",
-      subtitle: "Starting from 40000",
-    },
-    {
-      imageSrc: img2,
-      heading: "Gold Laptop",
-      subtitle: "Starting from 760000",
-    },
-    {
-      imageSrc: img1,
-      heading: "Watch",
-      subtitle: "Starting from 30000",
-    },
-    {
-      imageSrc: img2,
-      heading: "Table",
-      subtitle: "Starting from 40000",
-    },
-    {
-      imageSrc: img1,
-      heading: "Beautiful Card",
-      subtitle: "This is a beautiful card with a fixed image.",
-    },
-  ];
+
   const { pageNumber, keyword, categoryName } = useParams();
   const { data, isLoading, error, isFetching } = useGetProductsQuery({
     keyword,
@@ -68,37 +22,55 @@ const Landing = () => {
   return (
     <>
       {isLoading || isFetching ? (
-        <div style={{marginTop:'5%'}}>
+        <div style={{ marginTop: "5%" }}>
           <Loader />
         </div>
-        
       ) : error ? (
         <Message variant="danger">
           something_went_wrong_please_refresh_the_page
         </Message>
       ) : (
-        <div
-          style={{
-            display: deviceType === "mobile" ? "grid" : "flex",
-            gridTemplateColumns: deviceType === "mobile" ? "1fr 1fr" : "",
-            flexWrap: deviceType === "mobile" ? "initial" : "wrap",
-            justifyContent: deviceType === "mobile" ? "" : "center",
-            padding: deviceType === "mobile" ? "6px" : "20px",
-          }}
-        >
-          {data?.products.map((data: any) => (
-            <Card
-              handleClick={() => {
-                window.scroll(0, 0);
-                navigate(`/productDetail/${data?._id}`);
-              }}
-              imageSrc={data?.image}
-              heading={data?.name}
-              subtitle={data?.price}
-              address={data?.address}
+        <>
+          <div
+            style={{
+              position: "absolute",
+              bottom: deviceType==='mobile'?'66px': "80px",
+              left: "50%", // Use left: 50% to position the element relative to its parent
+              transform: "translateX(-50%)", // Use transform to center the element horizontally
+            }}
+          >
+            <Paginate
+              comesFrom=""
+              pages={data?.pages}
+              page={data?.page}
+              keyword={keyword ? keyword : ""}
+              category={categoryName ? categoryName : ""}
             />
-          ))}
-        </div>
+          </div>
+
+          <div
+            style={{
+              display: deviceType === "mobile" ? "grid" : "flex",
+              gridTemplateColumns: deviceType === "mobile" ? "1fr 1fr" : "",
+              flexWrap: deviceType === "mobile" ? "initial" : "wrap",
+              justifyContent: deviceType === "mobile" ? "" : "center",
+              padding: deviceType === "mobile" ? "6px" : "20px",
+            }}
+          >
+            {data?.products.map((data: any) => (
+              <Card
+                handleClick={() => {
+                  window.scroll(0, 0);
+                  navigate(`/productDetail/${data?._id}`);
+                }}
+                imageSrc={data?.image}
+                heading={data?.name}
+                subtitle={data?.price}
+                address={data?.address}
+              />
+            ))}
+          </div>
+        </>
       )}
     </>
   );

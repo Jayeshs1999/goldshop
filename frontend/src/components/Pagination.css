@@ -1,0 +1,28 @@
+ /* .custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+} */
+
+.custom-pagination-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    background-color: white;
+}
+/*
+.custom-pagination-btn:hover {
+  background-color: #0056b3;
+}
+
+.custom-pagination-btn:disabled {
+  background-color: #ced4da;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.custom-pagination-btn svg {
+  margin-right: 6px;
+} */
