@@ -175,6 +175,7 @@ const ProductDetail = ({ image, title, description, price }: any) => {
 const handleInquiry = () => {
   // Implement your inquiry logic here
   console.log("Inquiry button clicked");
+  alert('Comming Soon')
 };
 
 export default ProductDetail;
