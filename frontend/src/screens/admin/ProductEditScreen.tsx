@@ -156,7 +156,7 @@ const ProductEditScreen = () => {
 
   return (
     <>
-      <Link to={"/productlist"} className="btn btn-light my-3">
+      <Link to={"/productlist"} className="btn btn-light my-2">
         Go Back
       </Link>
       <FormContainer comesfrom="false">

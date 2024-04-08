@@ -52,12 +52,12 @@ const ProfileScreen = () => {
   };
 
   return (
-    <>
-      <Link to="/" className="btn btn-light my-3">
+    <div style={{margin:'20px' }}>
+      <Link to="/" className="btn btn-light my-2">
         Go Back
       </Link>
-      <Row>
-        <Col md={6}>
+      <Row style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+        <Col md={5}>
           <h2>User Profile</h2>
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name" className="my-2">
@@ -107,7 +107,7 @@ const ProfileScreen = () => {
         </Col>
        
       </Row>
-    </>
+    </div>
   );
 };
 
