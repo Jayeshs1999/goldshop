@@ -3,11 +3,12 @@
 ## Table of Contents
 1. [Quick Summary](#quick-summary)
 2. [Version](#version)
-3. [Pre-requisites](#prerequisites)
-4. [Setup Instructions](#setup-instructions)
-5. [Configuration](#configuration)
-6. [Dependencies](#dependencies)
-7. [Deployment Instructions](#deployment-instructions)
+3. [Pre-requisites](#pre-requisites)
+4. [Nx Installation](#nx-installation)
+5. [Setup Instructions](#setup-instructions)
+6. [Configuration](#configuration)
+7. [Dependencies](#dependencies)
+8. [Deployment Instructions](#deployment-instructions)
 
 ## Quick Summary
 Zupotsu is a React Application designed for sports marketing purposes. It provides a platform for managing various aspects of sports marketing, including administration and containerized components. This README file provides essential information for setting up, configuring, and deploying the project.
@@ -22,6 +23,29 @@ Current version: 1.0.0
 4. Node Js Installation (https://nodejs.org/en/download )
 5. Docker 
 6. Docker hub account
+7. Nx
+
+
+## Nx Installation
+ 
+This project requires Node.js and npm (Node Package Manager) to be installed on your system. You can verify their versions or install them if necessary by following these steps:
+ 
+**Verifying Installed Versions**1. Open a terminal or command prompt.
+2. Run the following commands to check the installed versions of Node.js and npm:
+ 
+   ```
+   node -v
+   ```    
+   ```
+   npm -v
+   ```
+ 
+**Installing Nx CLI:**
+ 
+Once you have Node.js and npm set up, proceed with installing the Nx CLI globally using the following command:
+ ```
+ npm install -g nx
+ ```
 
 ## Setup Instructions
 To set up the project locally, follow below steps:
