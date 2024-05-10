@@ -52,7 +52,7 @@ To set up the project locally, follow below steps:
 1. Clone the repository:
     Copy & paste following command on your terminal
     ```
-    git clone https://ops-gitlab.iauro.co/zupotsu/sports-application.git
+    git clone https://Pallavi16@bitbucket.org/zupotsu-codebase/zupotsu-frontend.git
     ```
    (Latest branch - sonar-into-prod-3)
 
