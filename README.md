@@ -25,7 +25,6 @@ Current version: 1.0.0
 6. Docker hub account
 7. Nx
 
-
 ## Nx Installation
  
 This project requires Node.js and npm (Node Package Manager) to be installed on your system. You can verify their versions or install them if necessary by following these steps:
@@ -63,6 +62,7 @@ To set up the project locally, follow below steps:
     ```
     npm install --force
     ```
+    NOTE: The npm configuration file is set to point to the local folder for logs and the current working directory (cwd) by default, which aligns with our expectation that node_modules should be created within the project directoryThe npm configuration file is set to point to the local folder for logs and the current working directory (cwd) by default, which aligns with our expectation that node_modules should be created within the project directory
 
 4. Run the container application:
     ```
@@ -70,11 +70,15 @@ To set up the project locally, follow below steps:
     ```
    See the output - http://localhost:4200/
 
-5. Run the admin application:
+   NOTE: The node service in this project typically requires between 3MB to 50MB of memory to run effectively.
+
+6. Run the admin application:
     ```
     nx serve admin
     ```
    See the output - http://localhost:4201/
+   
+   NOTE: The node service in this project typically requires between 3MB to 50MB of memory to run effectively.
 
 ## Configuration
 The project utilizes Nx for managing the monorepo structure. Key configurations include:
