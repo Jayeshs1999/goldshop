@@ -62,23 +62,23 @@ To set up the project locally, follow below steps:
     ```
     npm install --force
     ```
-    NOTE: The npm configuration file is set to point to the local folder for logs and the current working directory (cwd) by default, which aligns with our expectation that node_modules should be created within the project directoryThe npm configuration file is set to point to the local folder for logs and the current working directory (cwd) by default, which aligns with our expectation that node_modules should be created within the project directory
 
-4. Run the container application:
+    NOTE 1: Please note that running npm install will download all project dependencies and may increase the size of the project folder significantly. After running npm install, the project folder size can be around 3 GB due to downloaded dependencies.
+   
+    NOTE 2: The npm configuration file is set to point to the local folder for logs and the current working directory (cwd) by default, which aligns with our expectation that node_modules should be created within the project directoryThe npm configuration file is set to point to the local folder for logs and the current working directory (cwd) by default, which aligns with our expectation that node_modules should be created within the project directory
+   
+
+5. Run the container application:
     ```
     nx serve container
     ```
    See the output - http://localhost:4200/
-
-   NOTE: The node service in this project typically requires between 3MB to 50MB of memory to run effectively.
 
 6. Run the admin application:
     ```
     nx serve admin
     ```
    See the output - http://localhost:4201/
-   
-   NOTE: The node service in this project typically requires between 3MB to 50MB of memory to run effectively.
 
 ## Configuration
 The project utilizes Nx for managing the monorepo structure. Key configurations include:
