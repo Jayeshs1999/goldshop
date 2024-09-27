@@ -21,7 +21,7 @@ const Landing = () => {
   console.log("data:", data)
   return (
     <>
-      {isLoading || isFetching ? (
+      {/* {isLoading || isFetching ? (
         <div style={{ marginTop: "5%" }}>
           <Loader />
         </div>
@@ -71,7 +71,8 @@ const Landing = () => {
             ))}
           </div>
         </>
-      )}
+      )} */}
+      Jayesh
     </>
   );
 };

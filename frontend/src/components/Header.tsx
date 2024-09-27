@@ -70,7 +70,7 @@ const Header = () => {
                 </Button>
               )}
             </>
-            {userInfo && (
+            {/* {userInfo && (
               <NavDropdown
                 style={{marginTop:deviceType==='mobile'? '10px':'initial'}}
                 // title={<span>{userProfileVisibleLogic(userInfo?.name)}</span>}
@@ -87,7 +87,7 @@ const Header = () => {
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
-            )}
+            )} */}
           </Nav>
         </Navbar.Collapse>
       </Container>
