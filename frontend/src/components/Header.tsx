@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../assets/logo.png";
+import logo from "../assets/mh.png";
 import { useNavigate } from "react-router";
 import { LinkContainer } from "react-router-bootstrap";
 import { Button } from "@mui/material";
@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <Navbar
       collapseOnSelect
-      style={{ border: "1px solid red" }}
+      // style={{ backgroundImage: "linear-gradient(73deg,#529246,#efbd3b,#f681db,#bd45a6,#9c929d,#8023ba)" }}
       expand="lg"
       className="bg-body-tertiary"
     >
@@ -53,7 +53,7 @@ const Header = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
-            <>
+            {/* <>
               {!userInfo && (
                 <Button
                   variant="outlined"
@@ -69,7 +69,7 @@ const Header = () => {
                   I am Sonar
                 </Button>
               )}
-            </>
+            </> */}
             {/* {userInfo && (
               <NavDropdown
                 style={{marginTop:deviceType==='mobile'? '10px':'initial'}}

@@ -21,25 +21,26 @@ import PrivateRoute from "./components/PrivateRoute";
 import ProfileScreen from "./screens/ProfileScreen";
 import ProductListScreen from "./screens/admin/ProductListScreen";
 import ProductEditScreen from "./screens/admin/ProductEditScreen";
+import BackgroundGradient from "./components/BackgroundGradient";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<Landing />}></Route>
-      <Route path="/page/:pageNumber" element={<Landing />} />
+      {/* <Route path="/page/:pageNumber" element={<Landing />} />
       <Route path="/search/:keyword/page/:pageNumber" element={<Landing />} />
-      <Route path="/login" element={<LoginScreen />} />
+      <Route path="/login" element={<LoginScreen />} /> */}
 
-      <Route path="/register" element={<RegisterScreen />} />
+      {/* <Route path="/register" element={<RegisterScreen />} /> */}
       {/* <Route path="/forgetpassword" element={<ForgetPasswordScreen />} /> */}
-      <Route path="/productDetail/:id" element={<ProductDetail />}></Route>
+      {/* <Route path="/productDetail/:id" element={<ProductDetail />}></Route> */}
 
       {/*is any route make Private take it  here  */}
-      <Route path="" element={<PrivateRoute />}>
+      {/* <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
         <Route path="/productList" element={<ProductListScreen />} />
         <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
-      </Route>
+      </Route> */}
     </Route>
   )
 );
@@ -49,6 +50,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+     <BackgroundGradient />
     <Provider store={store}>
     <RouterProvider router={router} />
     </Provider>
