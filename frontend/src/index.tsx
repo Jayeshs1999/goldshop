@@ -13,14 +13,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import Landing from "./screens/Landing";
-import ProductDetail from "./screens/ProductDetails";
-import LoginScreen from "./screens/LoginScreen";
-import RegisterScreen from "./screens/RegisterScreen";
+// import ProductDetail from "./screens/ProductDetails";
+// import LoginScreen from "./screens/LoginScreen";
+// import RegisterScreen from "./screens/RegisterScreen";
 import store from "./store";
-import PrivateRoute from "./components/PrivateRoute";
-import ProfileScreen from "./screens/ProfileScreen";
-import ProductListScreen from "./screens/admin/ProductListScreen";
-import ProductEditScreen from "./screens/admin/ProductEditScreen";
+// import PrivateRoute from "./components/PrivateRoute";
+// import ProfileScreen from "./screens/ProfileScreen";
+// import ProductListScreen from "./screens/admin/ProductListScreen";
+// import ProductEditScreen from "./screens/admin/ProductEditScreen";
 import BackgroundGradient from "./components/BackgroundGradient";
 
 const router = createBrowserRouter(

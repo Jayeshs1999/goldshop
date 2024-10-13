@@ -6,27 +6,25 @@ import logo from "../assets/mh.png";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
-import { logout } from "../slices/authSlice";
-import useDeviceType from "../utils/DeviceType";
+// import { logout } from "../slices/authSlice";
+// import useDeviceType from "../utils/DeviceType";
 
 const Header = () => {
-  const deviceType = useDeviceType()
   const { userInfo } = useSelector((state: any) => state.auth);
   console.log("ui :", userInfo)
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [selectedLink, setSelectedLink] = useState("");
   const [logoutApiCall] = useLogoutMutation();
-   const logoutHandler = async () => {
-     try {
-       await logoutApiCall("").unwrap();
-       dispatch(logout(""));
+  //  const logoutHandler = async () => {
+  //    try {
+  //      await logoutApiCall("").unwrap();
+  //      dispatch(logout(""));
       
-       navigate("/login");
-     } catch (error) {
-       console.log(error);
-     }
-   };
+  //      navigate("/login");
+  //    } catch (error) {
+  //      console.log(error);
+  //    }
+  //  };
   
   return (
     <Navbar
@@ -39,7 +37,7 @@ const Header = () => {
         <Navbar.Brand
           style={{ cursor: "pointer" }}
           onClick={() => {
-            setSelectedLink("");
+            // setSelectedLink("");
             navigate("/");
           }}
         >

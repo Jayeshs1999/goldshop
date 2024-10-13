@@ -1,11 +1,11 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router";
+import {  useParams } from "react-router";
 import { useGetProductsQuery } from "../slices/productsAPISlice";
-import useDeviceType from "../utils/DeviceType";
-import Paginate from "../components/Paginate";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import ProductEditScreen from "./admin/ProductEditScreen";
+// import useDeviceType from "../utils/DeviceType";
+// import Paginate from "../components/Paginate";
+// import Loader from "../components/Loader";
+// import Message from "../components/Message";
+// import ProductEditScreen from "./admin/ProductEditScreen";
 import { Button, Form } from "react-bootstrap";
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
@@ -13,11 +13,9 @@ import PhoneInput from 'react-phone-number-input'
 
 
 const Landing = () => {
-  const deviceType = useDeviceType();
-  const navigate = useNavigate();
 
   const { pageNumber, keyword, categoryName } = useParams();
-  const { data, isLoading, error, isFetching } = useGetProductsQuery({
+  const { data } = useGetProductsQuery({
     keyword,
     pageNumber,
     categoryName,
