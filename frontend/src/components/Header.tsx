@@ -4,14 +4,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/mh.png";
 import { useNavigate } from "react-router";
-import { LinkContainer } from "react-router-bootstrap";
-import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import useDeviceType from "../utils/DeviceType";
-import { NavDropdown } from "react-bootstrap";
-import { userProfileVisibleLogic } from "../utils/objects";
 
 const Header = () => {
   const deviceType = useDeviceType()
@@ -35,9 +31,9 @@ const Header = () => {
   return (
     <Navbar
       collapseOnSelect
-      // style={{ backgroundImage: "linear-gradient(73deg,#529246,#efbd3b,#f681db,#bd45a6,#9c929d,#8023ba)" }}
+      style={{ background: "whitesmoke" }}
       expand="lg"
-      className="bg-body-tertiary"
+      className=""
     >
       <Container>
         <Navbar.Brand
@@ -47,7 +43,7 @@ const Header = () => {
             navigate("/");
           }}
         >
-          <img src={logo} style={{ height: "65px" }} alt="" />
+          <img src={logo} style={{ height: "100px" }} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

@@ -1,6 +1,4 @@
 import React from "react";
-import Card from "../utils/Card";
-import { img1, img2 } from "../assets";
 import { useNavigate, useParams } from "react-router";
 import { useGetProductsQuery } from "../slices/productsAPISlice";
 import useDeviceType from "../utils/DeviceType";
@@ -30,36 +28,17 @@ const Landing = () => {
   return (
     <div style={{ margin: "20px" }}>
       <Form onSubmit={submitHandler}>
-        <Form.Group controlId="name">
-          <Form.Label>Child Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Child Name"
-            // value={name}
-            // onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
         <Form.Group controlId="name" style={{ marginTop: "20px" }}>
-          <Form.Label>Father Name</Form.Label>
+          <Form.Label style={{fontWeight:'bold'}}>Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Father Name"
+            placeholder="Enter Your Name"
             // value={name}
             // onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="name" style={{ marginTop: "20px" }}>
-          <Form.Label>Mother Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Mother Name"
-            // value={name}
-            // onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-
-        <Form.Group controlId="description" className="my-2">
-          <Form.Label>Address</Form.Label>
+        <Form.Group controlId="description" className="my-4">
+          <Form.Label style={{fontWeight:'bold'}}>Address</Form.Label>
           <Form.Control
             as="textarea" // Set "as" prop to "textarea"
             rows={3} // Specify the number of visible rows (adjust as needed)
@@ -69,8 +48,8 @@ const Landing = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="phonenumber" className="my-2">
-              <Form.Label>
+        <Form.Group controlId="phonenumber" className="my-4">
+              <Form.Label style={{fontWeight:'bold'}}>
                 Phone Number
                 {/* Please Add your phone number again &#128528; */}
               </Form.Label>
@@ -83,8 +62,8 @@ const Landing = () => {
                 onChange={()=>{}}/>
             </Form.Group>
 
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Upload Child Image </Form.Label>
+            <Form.Group controlId="formFile" className="mb-4">
+              <Form.Label style={{fontWeight:'bold'}}>Upload Photo </Form.Label>
               <Form.Control type="file" />
             </Form.Group>
 
