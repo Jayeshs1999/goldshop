@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/mh.png";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { useLogoutMutation } from "../slices/usersApiSlice";
+import { useSelector } from "react-redux";
 // import { logout } from "../slices/authSlice";
 // import useDeviceType from "../utils/DeviceType";
 
@@ -14,7 +13,6 @@ const Header = () => {
   console.log("ui :", userInfo)
   // const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [logoutApiCall] = useLogoutMutation();
   //  const logoutHandler = async () => {
   //    try {
   //      await logoutApiCall("").unwrap();
