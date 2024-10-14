@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  useParams } from "react-router";
+import {  useNavigate, useParams } from "react-router";
 import { useCreateProductMutation, useGetProductsQuery } from "../slices/productsAPISlice";
 // import useDeviceType from "../utils/DeviceType";
 // import Paginate from "../components/Paginate";
@@ -35,6 +35,7 @@ const Landing = () => {
   const [address, setAddress] = useState("");
   console.log("data:", data);
   const [loader, setLoader] = useState(false);
+  const navigate =useNavigate();
 
 
   const submitHandler = async (e: any) => {
@@ -53,6 +54,7 @@ const Landing = () => {
       if (result) {
         // navigate('/productlist')
         toast.success("Form submitted successfully!");
+        navigate('/success')
       } else {
         toast.error("Something went wrong");
       }
