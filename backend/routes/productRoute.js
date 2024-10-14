@@ -4,7 +4,7 @@ import { createProduct, createProductReview, deleteProduct, getProducts,getProdu
 import { protect,admin} from '../middleware/authMiddleware.js';
 import checkObjectId from "../middleware/checkObjectId.js";
 
-router.route('/').get(getProducts).post(protect, createProduct);
+router.route('/').get(getProducts).post(createProduct);
 router.get('/top', getTopProducts)
 
 router.route('/:id').get(checkObjectId,getProductsById).put(protect,checkObjectId,updateProduct).delete(protect,checkObjectId, deleteProduct);
