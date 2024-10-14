@@ -22,11 +22,13 @@ import store from "./store";
 // import ProductListScreen from "./screens/admin/ProductListScreen";
 // import ProductEditScreen from "./screens/admin/ProductEditScreen";
 import BackgroundGradient from "./components/BackgroundGradient";
+import SuccessScreen from "./utils/SuccessScreen/SuccessScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/" element={<Landing />}></Route>
+      <Route path="/success" element={<SuccessScreen />}></Route>
       {/* <Route path="/page/:pageNumber" element={<Landing />} />
       <Route path="/search/:keyword/page/:pageNumber" element={<Landing />} />
       <Route path="/login" element={<LoginScreen />} /> */}

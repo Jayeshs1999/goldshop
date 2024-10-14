@@ -25,8 +25,13 @@ const reviewSchema = mongoose.Schema({
 
 const productSchema = new mongoose.Schema(
   {
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: "User",
+    // },
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String, // Add a new field to store the UUID
       required: true,
       ref: "User",
     },

@@ -52,7 +52,7 @@ const Landing = () => {
       const result = await createProduct(updatedProduct);
       if (result) {
         // navigate('/productlist')
-        toast.success("Book added Successfully");
+        toast.success("Form submitted successfully!");
       } else {
         toast.error("Something went wrong");
       }

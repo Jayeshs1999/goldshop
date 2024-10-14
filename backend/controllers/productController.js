@@ -1,6 +1,9 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Product from "../models/productModule.js";
 import fisherYatesShuffle from "../routes/suffleBooks.js";
+import { v4 as uuidv4 } from 'uuid';
+
+const uniqueId = uuidv4();
 
 //@desc Fetch all products
 //@route GET /api/products
@@ -75,7 +78,7 @@ const createProduct =asyncHandler( async (req,res)=>{
     
     const product = new Product({
       name: name,
-      user: req.user._id,
+      user: uniqueId,
       image: image
         ? image
         : "https://firebasestorage.googleapis.com/v0/b/bookbucket-5253e.appspot.com/o/images%2F26690.jpg?alt=media&token=91f701e4-4f9f-4552-9c40-fdc86f9e3f66&_gl=1*5qo2th*_ga*MzcyMzM2MzI5LjE2OTI0NTY4ODU.*_ga_CW55HF8NVT*MTY5NzYyOTIzMy4yNC4xLjE2OTc2MjkyNjguMjUuMC4w",
