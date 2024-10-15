@@ -11,22 +11,22 @@ import { LinkContainer } from "react-router-bootstrap";
 import useDeviceType from "../utils/DeviceType";
 
 const Header = () => {
-  const deviceType =useDeviceType();
+  const deviceType = useDeviceType();
   const { userInfo } = useSelector((state: any) => state.auth);
-  console.log("ui :", userInfo)
+  console.log("ui :", userInfo);
   // const dispatch = useDispatch();
   const navigate = useNavigate();
   //  const logoutHandler = async () => {
   //    try {
   //      await logoutApiCall("").unwrap();
   //      dispatch(logout(""));
-      
+
   //      navigate("/login");
   //    } catch (error) {
   //      console.log(error);
   //    }
   //  };
-  
+
   return (
     <Navbar
       collapseOnSelect
@@ -65,14 +65,17 @@ const Header = () => {
                 </Button>
               )}
             </> */}
-              <LinkContainer className="mb-2" to="/aboutUs">
-                    <NavDropdown.Item className="mr-2">About Us</NavDropdown.Item>
-                  </LinkContainer>
-                  <LinkContainer to="/productList">
-                    <NavDropdown.Item>Add your product</NavDropdown.Item>
-              </LinkContainer>
-            
-              {/* <NavDropdown
+            <LinkContainer className="mb-2" to="/">
+              <NavDropdown.Item className="mr-2">Home</NavDropdown.Item>
+            </LinkContainer>
+            <LinkContainer className="mb-2" to="/aboutUs">
+              <NavDropdown.Item className="mr-2">About Us</NavDropdown.Item>
+            </LinkContainer>
+            <LinkContainer className="mb-2" to="/ourChannel">
+              <NavDropdown.Item className="mr-2">Our Channel</NavDropdown.Item>
+            </LinkContainer>
+
+            {/* <NavDropdown
                 style={{marginTop:deviceType==='mobile'? '10px':'initial'}}
                 // title={<span>{userProfileVisibleLogic(userInfo?.name)}</span>}
                 title={<span>{userInfo?.name}</span>}
@@ -86,7 +89,6 @@ const Header = () => {
                 </LinkContainer>
                 
               </NavDropdown> */}
-            
           </Nav>
         </Navbar.Collapse>
       </Container>

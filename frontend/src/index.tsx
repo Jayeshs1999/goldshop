@@ -24,6 +24,7 @@ import store from "./store";
 import BackgroundGradient from "./components/BackgroundGradient";
 import SuccessScreen from "./utils/SuccessScreen/SuccessScreen";
 import AboutUsScreen from "./screens/AboutUsScreen";
+import YouTubeEmbed from "./screens/OurChannelScreen/OurChannelScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Landing />}></Route>
       <Route path="/success" element={<SuccessScreen />}></Route>
       <Route path="/aboutUs" element={<AboutUsScreen />}></Route>
+      <Route path="/ourChannel" element={<YouTubeEmbed />}></Route>
       {/* <Route path="/page/:pageNumber" element={<Landing />} />
       <Route path="/search/:keyword/page/:pageNumber" element={<Landing />} />
       <Route path="/login" element={<LoginScreen />} /> */}
