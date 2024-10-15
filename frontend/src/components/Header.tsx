@@ -5,10 +5,13 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/mh.png";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 // import { logout } from "../slices/authSlice";
-// import useDeviceType from "../utils/DeviceType";
+import useDeviceType from "../utils/DeviceType";
 
 const Header = () => {
+  const deviceType =useDeviceType();
   const { userInfo } = useSelector((state: any) => state.auth);
   console.log("ui :", userInfo)
   // const dispatch = useDispatch();
@@ -62,8 +65,14 @@ const Header = () => {
                 </Button>
               )}
             </> */}
-            {/* {userInfo && (
-              <NavDropdown
+              <LinkContainer className="mb-2" to="/aboutUs">
+                    <NavDropdown.Item className="mr-2">About Us</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/productList">
+                    <NavDropdown.Item>Add your product</NavDropdown.Item>
+              </LinkContainer>
+            
+              {/* <NavDropdown
                 style={{marginTop:deviceType==='mobile'? '10px':'initial'}}
                 // title={<span>{userProfileVisibleLogic(userInfo?.name)}</span>}
                 title={<span>{userInfo?.name}</span>}
@@ -75,11 +84,9 @@ const Header = () => {
                 <LinkContainer to="/productList">
                   <NavDropdown.Item>Add your product</NavDropdown.Item>
                 </LinkContainer>
-                <NavDropdown.Item onClick={logoutHandler}>
-                  Logout
-                </NavDropdown.Item>
-              </NavDropdown>
-            )} */}
+                
+              </NavDropdown> */}
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

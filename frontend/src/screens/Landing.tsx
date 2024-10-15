@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router";
 import { useCreateProductMutation, useGetProductsQuery } from "../slices/productsAPISlice";
 // import useDeviceType from "../utils/DeviceType";
@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import storage from "../utils/firebase";
 import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 import Loader from "../components/Loader";
+import './Landing.css';
 
 
 
@@ -36,10 +37,23 @@ const Landing = () => {
   console.log("data:", data);
   const [loader, setLoader] = useState(false);
   const navigate =useNavigate();
+  const [isDisabled,setIsDisabled] = useState(true);
+
+
+  useEffect(()=>{
+
+    if(name && image &&  description && address && phoneNumber ) {
+      setIsDisabled(false)
+    }else {
+      setIsDisabled(true)
+    }
+
+  },[name,image,description,phoneNumber,address])
 
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
+
     const updatedProduct = {
       name,
       image: image,
@@ -86,7 +100,7 @@ const Landing = () => {
     <div style={{ margin: "20px" }}>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name" style={{ marginTop: "20px" }}>
-          <Form.Label style={{fontWeight:'bold'}}>Name</Form.Label>
+          <Form.Label style={{fontWeight:'bold'}}>Name <span style={{color:'red'}}>*</span></Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Your Name"
@@ -95,7 +109,7 @@ const Landing = () => {
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="description" className="my-4">
-          <Form.Label style={{fontWeight:'bold'}}>Address</Form.Label>
+          <Form.Label style={{fontWeight:'bold'}}>Address<span style={{color:'red'}}>*</span></Form.Label>
           <Form.Control
             as="textarea" // Set "as" prop to "textarea"
             rows={3} // Specify the number of visible rows (adjust as needed)
@@ -107,14 +121,14 @@ const Landing = () => {
 
         <Form.Group controlId="phonenumber" className="my-4">
               <Form.Label style={{fontWeight:'bold'}}>
-                Phone Number
+                Phone Number<span style={{color:'red'}}>*</span>
                 {/* Please Add your phone number again &#128528; */}
               </Form.Label>
               <PhoneInput
                 defaultCountry="IN"
+                countries={['IN']}
                 placeholder="Enter phone number"
                 limitMaxLength={true}
-                
                 value={''}
                 onChange={(e: any) => {
                   setPhoneNumber(e);
@@ -122,15 +136,16 @@ const Landing = () => {
             </Form.Group>
 
             <Form.Group controlId="formFile" className="mb-4">
-              <Form.Label style={{fontWeight:'bold'}}>Upload best photo here</Form.Label>
-              <Form.Control
+              <Form.Label style={{fontWeight:'bold'}}>Upload best photo here<span style={{color:'red'}}>*</span></Form.Label>
+              {/* <Form.Control
                 type="text"
                 readOnly
                 placeholder="Enter Image URL"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-              ></Form.Control>
+              ></Form.Control> */}
               <Form.Control
+              className="custom-file-input"
                 type="file"
                 // label="Choose file"
                 onChange={uploadFileHandler}
@@ -139,7 +154,7 @@ const Landing = () => {
             {loader && <Loader />}
 
             <Form.Group controlId="description" className="my-4">
-          <Form.Label style={{fontWeight:'bold'}}>Description</Form.Label>
+          <Form.Label style={{fontWeight:'bold'}}>Description<span style={{color:'red'}}>*</span></Form.Label>
           <Form.Control
             as="textarea" // Set "as" prop to "textarea"
             rows={3} // Specify the number of visible rows (adjust as needed)
@@ -147,13 +162,15 @@ const Landing = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></Form.Control>
+          <div className="mt-3" style={{fontWeight:'bold'}}><span style={{color:'red'}}>*</span> All fields are required</div>
         </Form.Group>
 
             <Button
               className="mt-2 w-100"
-              // disabled={showButtonDisable}
+              disabled={isDisabled}
               type="submit"
               variant="warning"
+
             >
               Submit
             </Button>

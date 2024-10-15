@@ -1,0 +1,23 @@
+/* Add this to your CSS file (e.g., App.css) */
+.custom-file-input::-webkit-file-upload-button {
+    background-color: rgb(133, 133, 231);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .custom-file-input::-moz-file-upload-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .custom-file-input {
+    color: blue;
+  }
+  
