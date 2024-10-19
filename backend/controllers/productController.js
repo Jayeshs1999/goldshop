@@ -40,10 +40,10 @@ const getProducts =asyncHandler( async (req,res)=>{
         .lean() // Convert documents to plain JavaScript objects
 
     // Randomize the order of products using Fisher-Yates shuffle
-    // const randomizedProducts = fisherYatesShuffle(products);
+        const randomizedProducts = fisherYatesShuffle(products);
 
         res.json({
-            products: products,
+            products: randomizedProducts,
             page, pages: Math.ceil(count / pageSize)
         });
     }

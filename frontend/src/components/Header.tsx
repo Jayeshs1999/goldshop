@@ -68,12 +68,13 @@ const Header = () => {
             <LinkContainer className="mb-2" to="/">
               <NavDropdown.Item className="mr-2">Home</NavDropdown.Item>
             </LinkContainer>
-            <LinkContainer className="mb-2" to="/ourPartner">
-              <NavDropdown.Item className="mr-2">Our Partner</NavDropdown.Item>
-            </LinkContainer>
 
             <LinkContainer className="mb-2" to="/participantList">
               <NavDropdown.Item className="mr-2">Participant List</NavDropdown.Item>
+            </LinkContainer>
+
+            <LinkContainer className="mb-2" to="/ourPartner">
+              <NavDropdown.Item className="mr-2">Our Partner</NavDropdown.Item>
             </LinkContainer>
             <LinkContainer className="mb-2" to="/aboutUs">
               <NavDropdown.Item className="mr-2">About Us</NavDropdown.Item>
@@ -81,6 +82,11 @@ const Header = () => {
             <LinkContainer className="mb-2" to="/ourChannel">
               <NavDropdown.Item className="mr-2">Our Channel</NavDropdown.Item>
             </LinkContainer>
+
+            <LinkContainer className="mb-2" to="/ourBlogs">
+              <NavDropdown.Item className="mr-2">Blogs</NavDropdown.Item>
+            </LinkContainer>
+
             <LinkContainer className="mb-2" to="/contactUs">
               <NavDropdown.Item className="mr-2">Contact Us</NavDropdown.Item>
             </LinkContainer>

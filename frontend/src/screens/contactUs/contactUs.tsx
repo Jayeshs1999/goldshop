@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import linkedIn from "../../assets/linkedin.png";
 import Instagram from "../../assets/insta.png";
 import youtube from "../../assets/youtube.png";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 const ContactUs = () => {
+    const navigate = useNavigate();
   const handleEmailClick = () => {
     window.location.href =
       "mailto:jayeshsevatkar55Gmail.com?subject=Hello&body=I%20would%20like%20to%20discuss...";
@@ -15,8 +17,20 @@ const ContactUs = () => {
 
   return (
     <div className="p-3">
-      <div>
-        <h2>Email:</h2>
+         <div
+        className="mb-2"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "4px",
+          alignSelf: "start",
+        }}
+      >
+        <ArrowBackIcon onClick={() => navigate("/")} />
+        <h4 className="mb-0">Contact Us</h4>
+      </div>
+      <div className="mt-5">
+        <h4>Email:</h4>
         <p>
           <Link to="#" onClick={handleEmailClick} style={{paddingLeft:'10px'}}>
             jayeshsevatkar55@gmail.com
@@ -25,7 +39,7 @@ const ContactUs = () => {
       </div>
 
       <div>
-        <h2>Contact No:</h2>
+        <h4>Contact No:</h4>
         <Link
           to="#"
           onClick={handlePhoneClick}
@@ -36,7 +50,7 @@ const ContactUs = () => {
       </div>
 
       <div style={{display:'flex', justifyContent:'start',alignItems:'start',flexDirection:'column'}}>
-        <h2 style={{alignSelf:'start'}}>Follow Us:</h2>
+        <h4 style={{alignSelf:'start'}}>Follow Us:</h4>
         <div style={{paddingLeft:'10px'}}>
         <div>
           <img src={youtube} alt="youtube" />

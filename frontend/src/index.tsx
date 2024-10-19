@@ -30,6 +30,8 @@ import ViewAdminParticipantScreen from "./screens/ViewParticipantAdmin/ViewParti
 import NotFoundRoute from "./screens/NotFoundRoute";
 import OurPartner from "./screens/admin/ourPartner/OurPartner";
 import ContactUs from "./screens/contactUs/contactUs";
+import OurBlogs from "./screens/blogs/OurBlogs";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,7 +44,9 @@ const router = createBrowserRouter(
       <Route path="/viewParticipantListSDDSDFFDFCZXADSsdfdfefdcsade12343234543" element={<ViewAdminParticipantScreen />}></Route>
       <Route path="/ourPartner" element={<OurPartner />}></Route>
       <Route path="/contactUs" element={<ContactUs />}></Route>
+      <Route path="/ourBlogs" element={<OurBlogs />}></Route>
       <Route path="/*" element={<NotFoundRoute />}></Route>
+      
 
       {/* <Route path="/page/:pageNumber" element={<Landing />} />
       <Route path="/search/:keyword/page/:pageNumber" element={<Landing />} />
