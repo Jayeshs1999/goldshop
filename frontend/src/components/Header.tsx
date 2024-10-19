@@ -44,8 +44,8 @@ const Header = () => {
         >
           <img src={logo} style={{ height: "100px" }} alt="" />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
             {/* <>
@@ -68,12 +68,27 @@ const Header = () => {
             <LinkContainer className="mb-2" to="/">
               <NavDropdown.Item className="mr-2">Home</NavDropdown.Item>
             </LinkContainer>
+            <LinkContainer className="mb-2" to="/ourPartner">
+              <NavDropdown.Item className="mr-2">Our Partner</NavDropdown.Item>
+            </LinkContainer>
+
+            <LinkContainer className="mb-2" to="/participantList">
+              <NavDropdown.Item className="mr-2">Participant List</NavDropdown.Item>
+            </LinkContainer>
             <LinkContainer className="mb-2" to="/aboutUs">
               <NavDropdown.Item className="mr-2">About Us</NavDropdown.Item>
             </LinkContainer>
             <LinkContainer className="mb-2" to="/ourChannel">
               <NavDropdown.Item className="mr-2">Our Channel</NavDropdown.Item>
             </LinkContainer>
+            <LinkContainer className="mb-2" to="/contactUs">
+              <NavDropdown.Item className="mr-2">Contact Us</NavDropdown.Item>
+            </LinkContainer>
+
+            <LinkContainer className="mb-2" to="/viewParticipantListSDDSDFFDFCZXADSsdfdfefdcsade12343234543">
+              <NavDropdown.Item className="mr-2">Admin</NavDropdown.Item>
+            </LinkContainer>
+
 
             {/* <NavDropdown
                 style={{marginTop:deviceType==='mobile'? '10px':'initial'}}

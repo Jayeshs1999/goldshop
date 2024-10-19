@@ -25,8 +25,8 @@ const getProducts =asyncHandler( async (req,res)=>{
     const count = await Product.countDocuments(filters);
     if(user) {
         const products = await Product.find(filters)
-        .limit(pageSize)
-        .skip(pageSize * (page - 1))
+        // .limit(pageSize)
+        // .skip(pageSize * (page - 1))
         .sort({ updatedAt: -1 });
 
         res.json({
@@ -35,15 +35,15 @@ const getProducts =asyncHandler( async (req,res)=>{
         });
     }else {
         const products = await Product.find(filters)
-        .limit(pageSize)
-        .skip(pageSize * (page - 1))
+        // .limit(pageSize)
+        // .skip(pageSize * (page - 1))
         .lean() // Convert documents to plain JavaScript objects
 
     // Randomize the order of products using Fisher-Yates shuffle
-    const randomizedProducts = fisherYatesShuffle(products);
+    // const randomizedProducts = fisherYatesShuffle(products);
 
         res.json({
-            products: randomizedProducts,
+            products: products,
             page, pages: Math.ceil(count / pageSize)
         });
     }

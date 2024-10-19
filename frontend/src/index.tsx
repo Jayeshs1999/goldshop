@@ -25,6 +25,11 @@ import BackgroundGradient from "./components/BackgroundGradient";
 import SuccessScreen from "./utils/SuccessScreen/SuccessScreen";
 import AboutUsScreen from "./screens/AboutUsScreen";
 import YouTubeEmbed from "./screens/OurChannelScreen/OurChannelScreen";
+import ParticipantListScreen from "./screens/ParticipantListScreen";
+import ViewAdminParticipantScreen from "./screens/ViewParticipantAdmin/ViewParticipantsAdmin";
+import NotFoundRoute from "./screens/NotFoundRoute";
+import OurPartner from "./screens/admin/ourPartner/OurPartner";
+import ContactUs from "./screens/contactUs/contactUs";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +38,12 @@ const router = createBrowserRouter(
       <Route path="/success" element={<SuccessScreen />}></Route>
       <Route path="/aboutUs" element={<AboutUsScreen />}></Route>
       <Route path="/ourChannel" element={<YouTubeEmbed />}></Route>
+      <Route path="/participantList" element={<ParticipantListScreen />}></Route>
+      <Route path="/viewParticipantListSDDSDFFDFCZXADSsdfdfefdcsade12343234543" element={<ViewAdminParticipantScreen />}></Route>
+      <Route path="/ourPartner" element={<OurPartner />}></Route>
+      <Route path="/contactUs" element={<ContactUs />}></Route>
+      <Route path="/*" element={<NotFoundRoute />}></Route>
+
       {/* <Route path="/page/:pageNumber" element={<Landing />} />
       <Route path="/search/:keyword/page/:pageNumber" element={<Landing />} />
       <Route path="/login" element={<LoginScreen />} /> */}
