@@ -138,9 +138,9 @@ const ViewAdminParticipantScreen = () => {
                  </tr>
                </thead>
                <tbody>
-                 {data?.products?.map((product: any) => (
+                 {data?.products?.map((product: any,index:any) => (
                    <tr key={product._id}>
-                     <td>{product._id}</td>
+                     <td>{index+1}</td>
                      <td>{product.name}</td>
                      <td>{product.phoneNumber}</td>
                      <td>{product.address}</td>
