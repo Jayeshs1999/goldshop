@@ -14,6 +14,7 @@ import storage from "../utils/firebase";
 import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 import Loader from "../components/Loader";
 import './Landing.css';
+import { Typography } from "@mui/material";
 
 
 
@@ -97,87 +98,104 @@ const Landing = () => {
 
 
   return (
-    <div style={{ margin: "20px" }}>
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId="name" style={{ marginTop: "20px" }}>
-          <Form.Label style={{fontWeight:'bold'}}>Name <span style={{color:'red'}}>*</span></Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="description" className="my-4">
-          <Form.Label style={{fontWeight:'bold'}}>Address<span style={{color:'red'}}>*</span></Form.Label>
-          <Form.Control
-            as="textarea" // Set "as" prop to "textarea"
-            rows={3} // Specify the number of visible rows (adjust as needed)
-            placeholder="Enter Your Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+    // <div style={{ margin: "20px" }}>
+    //   <Form onSubmit={submitHandler}>
+    //     <Form.Group controlId="name" style={{ marginTop: "20px" }}>
+    //       <Form.Label style={{fontWeight:'bold'}}>Name <span style={{color:'red'}}>*</span></Form.Label>
+    //       <Form.Control
+    //         type="text"
+    //         placeholder="Enter Your Name"
+    //         value={name}
+    //         onChange={(e) => setName(e.target.value)}
+    //       ></Form.Control>
+    //     </Form.Group>
+    //     <Form.Group controlId="description" className="my-4">
+    //       <Form.Label style={{fontWeight:'bold'}}>Address<span style={{color:'red'}}>*</span></Form.Label>
+    //       <Form.Control
+    //         as="textarea" // Set "as" prop to "textarea"
+    //         rows={3} // Specify the number of visible rows (adjust as needed)
+    //         placeholder="Enter Your Address"
+    //         value={address}
+    //         onChange={(e) => setAddress(e.target.value)}
+    //       ></Form.Control>
+    //     </Form.Group>
 
-        <Form.Group controlId="phonenumber" className="my-4">
-              <Form.Label style={{fontWeight:'bold'}}>
-                Phone Number<span style={{color:'red'}}>*</span>
-                {/* Please Add your phone number again &#128528; */}
-              </Form.Label>
-              <PhoneInput
-                defaultCountry="IN"
-                countries={['IN']}
-                placeholder="Enter phone number"
-                limitMaxLength={true}
-                value={''}
-                onChange={(e: any) => {
-                  setPhoneNumber(e);
-                }}/>
-            </Form.Group>
+    //     <Form.Group controlId="phonenumber" className="my-4">
+    //           <Form.Label style={{fontWeight:'bold'}}>
+    //             Phone Number<span style={{color:'red'}}>*</span>
+    //             {/* Please Add your phone number again &#128528; */}
+    //           </Form.Label>
+    //           <PhoneInput
+    //             defaultCountry="IN"
+    //             countries={['IN']}
+    //             placeholder="Enter phone number"
+    //             limitMaxLength={true}
+    //             value={''}
+    //             onChange={(e: any) => {
+    //               setPhoneNumber(e);
+    //             }}/>
+    //         </Form.Group>
 
-            <Form.Group controlId="formFile" className="mb-4">
-              <Form.Label style={{fontWeight:'bold'}}>Upload best photo here<span style={{color:'red'}}>*</span></Form.Label>
-              {/* <Form.Control
-                type="text"
-                readOnly
-                placeholder="Enter Image URL"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              ></Form.Control> */}
-              <Form.Control
-              className="custom-file-input"
-                type="file"
-                // label="Choose file"
-                onChange={uploadFileHandler}
-              ></Form.Control>
-            </Form.Group>
-            {loader && <Loader />}
+    //         <Form.Group controlId="formFile" className="mb-4">
+    //           <Form.Label style={{fontWeight:'bold'}}>Upload best photo here<span style={{color:'red'}}>*</span></Form.Label>
+    //           {/* <Form.Control
+    //             type="text"
+    //             readOnly
+    //             placeholder="Enter Image URL"
+    //             value={image}
+    //             onChange={(e) => setImage(e.target.value)}
+    //           ></Form.Control> */}
+    //           <Form.Control
+    //           className="custom-file-input"
+    //             type="file"
+    //             // label="Choose file"
+    //             onChange={uploadFileHandler}
+    //           ></Form.Control>
+    //         </Form.Group>
+    //         {loader && <Loader />}
 
-            <Form.Group controlId="description" className="my-4">
-          <Form.Label style={{fontWeight:'bold'}}>Description<span style={{color:'red'}}>*</span></Form.Label>
-          <Form.Control
-            as="textarea" // Set "as" prop to "textarea"
-            rows={3} // Specify the number of visible rows (adjust as needed)
-            placeholder="Enter photo description (if any)"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></Form.Control>
-          <div className="mt-3" style={{fontWeight:'bold'}}><span style={{color:'red'}}>*</span> All fields are required</div>
-        </Form.Group>
+    //         <Form.Group controlId="description" className="my-4">
+    //       <Form.Label style={{fontWeight:'bold'}}>Description<span style={{color:'red'}}>*</span></Form.Label>
+    //       <Form.Control
+    //         as="textarea" // Set "as" prop to "textarea"
+    //         rows={3} // Specify the number of visible rows (adjust as needed)
+    //         placeholder="Enter photo description (if any)"
+    //         value={description}
+    //         onChange={(e) => setDescription(e.target.value)}
+    //       ></Form.Control>
+    //       <div className="mt-3" style={{fontWeight:'bold'}}><span style={{color:'red'}}>*</span> All fields are required</div>
+    //     </Form.Group>
 
-            <Button
-              className="mt-2 w-100"
-              disabled={isDisabled}
-              type="submit"
-              variant="warning"
+    //         <Button
+    //           className="mt-2 w-100"
+    //           disabled={isDisabled}
+    //           type="submit"
+    //           variant="warning"
 
-            >
-              Submit
-            </Button>
+    //         >
+    //           Submit
+    //         </Button>
             
         
-      </Form>
+    //   </Form>
+    // </div>
+    <>
+<div style={{display:'flex',justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
+<Typography style={{ fontSize: '29px',
+    textAlign: 'center',
+    fontFamily: 'fantasy',
+    paddingTop: '20px',}}>BEST PHOTOGRAPHY CONTEST WINNERS</Typography>
+<div style={{margin:'20px', border:'13px solid deeppink' ,display:'flex',justifyContent:'center', alignItems:'center'}}>
+<video height="380" autoPlay muted>
+        <source src="https://firebasestorage.googleapis.com/v0/b/maharashtrachya-kushit.appspot.com/o/winnerList.mp4?alt=media&token=8aa2ba86-3f6b-4afc-be47-d3505297f421" type="video/mp4" />
+        {/* <source src="movie.ogg" type="video/ogg" /> */}
+        Your browser does not support the video tag.
+      </video>
+</div>
+      
     </div>
+
+    </>
   );
 };
 
