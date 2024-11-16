@@ -30,13 +30,13 @@ const Header = () => {
   return (
     <Navbar
       collapseOnSelect
-      style={{ background: "whitesmoke" }}
+      style={{ backgroundImage: "linear-gradient(120deg, #f6d365 0%, #fda085 100%)"}}
       expand="lg"
       className=""
     >
       <Container>
         <Navbar.Brand
-          style={{ cursor: "pointer" }}
+          style={{ cursor: "pointer", }}
           onClick={() => {
             // setSelectedLink("");
             navigate("/");

@@ -184,8 +184,9 @@ const Landing = () => {
 <Typography style={{ fontSize: '29px',
     textAlign: 'center',
     fontFamily: 'fantasy',
+    fontWeight:'bold',
     paddingTop: '20px',}}>BEST PHOTOGRAPHY CONTEST WINNERS</Typography>
-<div style={{margin:'20px', border:'13px solid deeppink' ,display:'flex',justifyContent:'center', alignItems:'center'}}>
+<div style={{margin:'20px', border:'13px solid orange' ,display:'flex',justifyContent:'center', alignItems:'center', borderRadius:'5px'}}>
 <video height="380" autoPlay muted>
         <source src="https://firebasestorage.googleapis.com/v0/b/maharashtrachya-kushit.appspot.com/o/winnerList.mp4?alt=media&token=8aa2ba86-3f6b-4afc-be47-d3505297f421" type="video/mp4" />
         {/* <source src="movie.ogg" type="video/ogg" /> */}
