@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { LinkedInEmbed } from "react-social-media-embed";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Typography } from "@mui/material";
 
 function OurBlogs() {
   const [articles, setArticles] = useState([]);
@@ -21,7 +22,7 @@ function OurBlogs() {
   return (
     <div className="p-3">
       {/* <h1>Latest Medium Articles</h1> */}
-      <div
+      {/* <div
         className="mb-2"
         style={{
           display: "flex",
@@ -32,25 +33,33 @@ function OurBlogs() {
       >
         <ArrowBackIcon onClick={() => navigate("/")} />
         <h2 className="mb-0">Blogs</h2>
-      </div>
+      </div> */}
       <Container className="my-4">
-      <Row className="g-3">
-        {articles?.map((article:any, index:any) => (
-          <Col key={index} xs={12} sm={6} lg={4}>
-            <Card className="h-100">
-              <a href={article?.link} target="_blank" rel="noopener noreferrer">
-                <Card.Img
-                  variant="top"
-                  src={article?.description?.match(/<img[^>]+src="([^">]+)"/)?.[1]}
-                  alt={article?.title}
-                  style={{ height: '240px', objectFit: 'cover' }}
-                />
-              </a>
-              <Card.Body>
-                <a href={article?.link} target="" rel="noopener noreferrer">
-                  <Card.Title className="mb-2">{article?.title}</Card.Title>
+        <Row className="g-3">
+          {articles?.map((article: any, index: any) => (
+            <Col key={index} xs={12} sm={6} lg={4}>
+              <Card className="h-100">
+                <a
+                  href={article?.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Card.Img
+                    variant="top"
+                    src={
+                      article?.description?.match(
+                        /<img[^>]+src="([^">]+)"/
+                      )?.[1]
+                    }
+                    alt={article?.title}
+                    style={{ height: "240px", objectFit: "cover" }}
+                  />
                 </a>
-                {/* <Card.Text>
+                <Card.Body>
+                  <a href={article?.link} target="" rel="noopener noreferrer">
+                    <Card.Title className="mb-2">{article?.title}</Card.Title>
+                  </a>
+                  {/* <Card.Text>
                   Tags:{" "}
                   {article.categories.map((category: string, index: number) => (
                     <a href={`#${category}`} key={index}>
@@ -59,38 +68,70 @@ function OurBlogs() {
                     </a>
                   ))}
                 </Card.Text> */}
-              </Card.Body>
-              <Card.Footer className="bg-transparent border-0">
-                <Button
-                  variant="warning"
-                  href={article?.link}
-                  target=""
-                  className="d-flex align-items-center justify-content-center"
-                >
-                  Read more
-                  <svg
-                    className="ms-2"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                </Card.Body>
+                <Card.Footer className="bg-transparent border-0">
+                  <Button
+                    variant="warning"
+                    href={article?.link}
+                    target=""
+                    className="d-flex align-items-center justify-content-center"
                   >
-                    <path
-                      d="M1 8h14m0 0L9 3m6 5L9 13"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </Button>
-              </Card.Footer>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+                    Read more
+                    <svg
+                      className="ms-2"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 8h14m0 0L9 3m6 5L9 13"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+      <div>
+        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          Linkedin Post
+        </Typography>
+      </div>
+      <div style={{ border: "4px solid lightseagreen", borderRadius: "2px", marginBottom:'10px' }}>
+        <iframe
+          src="https://www.linkedin.com/embed/feed/update/urn:li:share:7268523071064457217"
+          height="400"
+          width="100%"
+          frameBorder="0"
+          title="Embedded post"
+        ></iframe>
+      </div>
+      <div style={{ border: "4px solid lightseagreen", borderRadius: "2px" ,marginBottom:'10px' }}>
+      <iframe
+        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267559034411507712"
+        height="400"
+        width="100%"
+        frameBorder="0"
+        title="Embedded post"
+      ></iframe>
+      </div>
+      <div style={{ border: "4px solid lightseagreen", borderRadius: "2px",marginBottom:'10px' }}>
+      <iframe
+        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7212169672161431552"
+        height="400"
+        width="100%"
+        frameBorder="0"
+        title="Embedded post"
+      ></iframe>
+      </div>
     </div>
   );
 }

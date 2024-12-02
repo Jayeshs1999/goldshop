@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
-import {  useNavigate, useParams } from "react-router";
-import { useCreateProductMutation, useGetProductsQuery } from "../slices/productsAPISlice";
+import { useNavigate, useParams } from "react-router";
+import {
+  useCreateProductMutation,
+  useGetProductsQuery,
+} from "../slices/productsAPISlice";
 // import useDeviceType from "../utils/DeviceType";
 // import Paginate from "../components/Paginate";
 // import Loader from "../components/Loader";
 // import Message from "../components/Message";
 // import ProductEditScreen from "./admin/ProductEditScreen";
 import { Button, Form } from "react-bootstrap";
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 import { toast } from "react-toastify";
 import storage from "../utils/firebase";
 import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 import Loader from "../components/Loader";
-import './Landing.css';
+import "./Landing.css";
 import { Typography } from "@mui/material";
-
-
+import OurBlogs from "./blogs/OurBlogs";
 
 const Landing = () => {
-
   const { pageNumber, keyword, categoryName } = useParams();
   const { data } = useGetProductsQuery({
     keyword,
@@ -28,7 +29,7 @@ const Landing = () => {
   });
 
   const [createProduct, { isLoading: loadingCreate }] =
-  useCreateProductMutation();
+    useCreateProductMutation();
 
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -37,20 +38,16 @@ const Landing = () => {
   const [address, setAddress] = useState("");
   console.log("data:", data);
   const [loader, setLoader] = useState(false);
-  const navigate =useNavigate();
-  const [isDisabled,setIsDisabled] = useState(true);
+  const navigate = useNavigate();
+  const [isDisabled, setIsDisabled] = useState(true);
 
-
-  useEffect(()=>{
-
-    if(name && image &&  description && address && phoneNumber ) {
-      setIsDisabled(false)
-    }else {
-      setIsDisabled(true)
+  useEffect(() => {
+    if (name && image && description && address && phoneNumber) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
     }
-
-  },[name,image,description,phoneNumber,address])
-
+  }, [name, image, description, phoneNumber, address]);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
@@ -69,7 +66,7 @@ const Landing = () => {
       if (result) {
         // navigate('/productlist')
         toast.success("Form submitted successfully!");
-        navigate('/success')
+        navigate("/success");
       } else {
         toast.error("Something went wrong");
       }
@@ -95,7 +92,6 @@ const Landing = () => {
       toast.error("Something went wrong");
     }
   };
-
 
   return (
     // <div style={{ margin: "20px" }}>
@@ -175,27 +171,49 @@ const Landing = () => {
     //         >
     //           Submit
     //         </Button>
-            
-        
+
     //   </Form>
     // </div>
     <>
-<div style={{display:'flex',justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
-<Typography style={{ fontSize: '29px',
-    textAlign: 'center',
-    fontFamily: 'fantasy',
-    fontWeight:'bold',
-    paddingTop: '20px',}}>BEST PHOTOGRAPHY CONTEST WINNERS</Typography>
-<div style={{margin:'20px', border:'13px solid orange' ,display:'flex',justifyContent:'center', alignItems:'center', borderRadius:'5px'}}>
-<video height="380" autoPlay muted>
-        <source src="https://firebasestorage.googleapis.com/v0/b/maharashtrachya-kushit.appspot.com/o/winnerList.mp4?alt=media&token=8aa2ba86-3f6b-4afc-be47-d3505297f421" type="video/mp4" />
-        {/* <source src="movie.ogg" type="video/ogg" /> */}
-        Your browser does not support the video tag.
-      </video>
-</div>
-      
-    </div>
-
+      {/* <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Typography
+          style={{
+            fontSize: "29px",
+            textAlign: "center",
+            fontFamily: "fantasy",
+            fontWeight: "bold",
+            paddingTop: "20px",
+          }}
+        >
+          BEST PHOTOGRAPHY CONTEST WINNERS
+        </Typography>
+        <div
+          style={{
+            margin: "20px",
+            border: "13px solid orange",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "5px",
+          }}
+        >
+          <video height="380" autoPlay muted>
+            <source
+              src="https://firebasestorage.googleapis.com/v0/b/maharashtrachya-kushit.appspot.com/o/winnerList.mp4?alt=media&token=8aa2ba86-3f6b-4afc-be47-d3505297f421"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div> */}
+      <OurBlogs />
     </>
   );
 };
