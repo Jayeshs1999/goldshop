@@ -141,6 +141,60 @@ const YouTubeEmbed = () => {
         allowFullScreen
         style={{ maxWidth: "100%", height: "190px" }}
       ></iframe>
+
+     
+
+<iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/PKSCCfbdHPI?si=xUfCoQx3U8wsb3W4"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        // referrerpolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ maxWidth: "100%", height: "190px" }}
+      ></iframe>
+     
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/dkqnFUpKHmI?si=Pxza3ecUD63VY-rQ"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        // referrerpolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ maxWidth: "100%", height: "190px" }}
+      ></iframe>
+
+<iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/GIq-VhaJATw?si=cvxSrRxPAPpC9iQQ"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        // referrerpolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ maxWidth: "100%", height: "190px" }}
+      ></iframe>
+<iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/GacB1ixqt_s?si=2VdFkVZTR4kHIV_v"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        // referrerpolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ maxWidth: "100%", height: "190px" }}
+      ></iframe>
+
+
+
+
+
     </div>
   );
 };
