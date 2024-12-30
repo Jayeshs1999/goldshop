@@ -21,13 +21,13 @@ const AboutUsScreen = () => {
       image:
         "https://firebasestorage.googleapis.com/v0/b/maharashtrachya-kushit.appspot.com/o/images%2Fimage%20(1).png?alt=media&token=45b061d5-bb7e-4b98-a39e-b427ee836ad7",
     },
-    // {
-    //   _id: 3,
-    //   name: "Dikshant Tirpude",
-    //   position: "Product Manager",
-    //   image:
-    //     "https://firebasestorage.googleapis.com/v0/b/bookbucket-5253e.appspot.com/o/images%2FWhatsApp%20Image%202023-10-18%20at%2012.08.29%20AM.jpeg?alt=media&token=a1d11060-2611-42a0-a30b-1f37f010ae6a&_gl=1*21t2mg*_ga*MzcyMzM2MzI5LjE2OTI0NTY4ODU.*_ga_CW55HF8NVT*MTY5NzU2Nzk1Ni4yMy4xLjE2OTc1Njc5ODkuMjcuMC4w",
-    // },
+    {
+      _id: 3,
+      name: "Sameer",
+      position: "Marketing Manager",
+      image:
+        "https://webcodeft.com/wp-content/uploads/2021/11/dummy-user.png",
+    },
     // {
     //   _id: 4,
     //   name: "Shivam Kinkar",

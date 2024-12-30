@@ -19,6 +19,7 @@ import Loader from "../components/Loader";
 import "./Landing.css";
 import { Typography } from "@mui/material";
 import OurBlogs from "./blogs/OurBlogs";
+import YouTubeEmbed from "./OurChannelScreen/OurChannelScreen";
 
 const Landing = () => {
   const { pageNumber, keyword, categoryName } = useParams();
@@ -213,7 +214,7 @@ const Landing = () => {
           </video>
         </div>
       </div> */}
-      <OurBlogs />
+      <YouTubeEmbed />
     </>
   );
 };

@@ -15,7 +15,7 @@ const YouTubeEmbed = () => {
         gap: "20px",
       }}
     >
-      <div
+      {/* <div
         className="mb-2"
         style={{
           display: "flex",
@@ -26,7 +26,7 @@ const YouTubeEmbed = () => {
       >
         <ArrowBackIcon onClick={() => navigate("/")} />
         <h2 className="mb-0">Our Videos</h2>
-      </div>
+      </div> */}
       {/* <iframe
         width="560"
         height="315"
@@ -38,6 +38,30 @@ const YouTubeEmbed = () => {
         style={{ maxWidth: "100%", height: "auto" }}
       /> */}
 
+<iframe
+        width="560"
+        height="190"
+        src="https://www.youtube.com/embed/k2ugNC-8DMQ?si=H37FflhyQKYyPDjs"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        // referrerpolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ maxWidth: "100%", height: "190px" }}
+      ></iframe>
+     
+       <iframe
+        width="560"
+        height="190"
+        src="https://www.youtube.com/embed/xlxmAFgPifg?si=VW6E7NYaOMbIbLfY"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        // referrerpolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ maxWidth: "100%", height: "190px" }}
+      ></iframe>
+      
       <iframe
         width="560"
         height="190"
