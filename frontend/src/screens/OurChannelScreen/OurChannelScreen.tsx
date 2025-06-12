@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import useDeviceType from "../../utils/DeviceType";
 
 // Replace these with your actual values
 const CHANNEL_ID = "UC4-Yi25Cn_p1YRRjBOy4wSA";
@@ -11,7 +12,7 @@ const YouTubeEmbed = () => {
   const [videoList, setVideoList] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const deviceType = useDeviceType();
   useEffect(() => {
     // Step 1: Get uploads playlist ID
     fetch(
@@ -64,12 +65,13 @@ const YouTubeEmbed = () => {
     >
       <div
         style={{
-          maxWidth: "1000px",
+          // maxWidth: "1000px",
           margin: "0 auto",
           background: "#fff",
           borderRadius: "18px",
           boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
           padding: "32px 24px",
+          width: deviceType === "mobile" ? "100%" : "80%",
         }}
       >
         <div
@@ -80,7 +82,7 @@ const YouTubeEmbed = () => {
             marginBottom: "32px",
           }}
         >
-          <ArrowBackIcon
+          {/* <ArrowBackIcon
             onClick={() => navigate("/")}
             style={{
               cursor: "pointer",
@@ -90,7 +92,7 @@ const YouTubeEmbed = () => {
             }}
             onMouseOver={(e) => (e.currentTarget.style.color = "#4338ca")}
             onMouseOut={(e) => (e.currentTarget.style.color = "#6366f1")}
-          />
+          /> */}
           <h2
             style={{
               margin: 0,
@@ -115,7 +117,12 @@ const YouTubeEmbed = () => {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gridTemplateColumns:
+                deviceType === "mobile"
+                  ? "1fr"
+                  : deviceType === "tablet" || deviceType === "small-tablet"
+                  ? "1fr 1fr "
+                  : "1fr 1fr 1fr",
               gap: "28px",
             }}
           >

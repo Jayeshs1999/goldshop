@@ -30,89 +30,172 @@ const Header = () => {
   return (
     <Navbar
       collapseOnSelect
-      style={{ backgroundImage: "linear-gradient(120deg, #f6d365 0%, #fda085 100%)"}}
       expand="lg"
-      className=""
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+        background: "rgba(255,255,255,0.7)",
+        backdropFilter: "blur(10px)",
+        boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.10)",
+        borderBottom: "1.5px solid #fda085",
+        borderRadius: "0 0 18px 18px",
+        padding: "0.5rem 0",
+        transition: "background 0.3s",
+      }}
     >
       <Container>
         <Navbar.Brand
-          style={{ cursor: "pointer", }}
-          onClick={() => {
-            // setSelectedLink("");
-            navigate("/");
+          style={{
+            cursor: "pointer",
           }}
+          onClick={() => navigate("/")}
         >
           <img src={logo} style={{ height: "100px" }} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        {/* // ... existing code ... */}
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto"></Nav>
-          <Nav>
-            {/* <>
-              {!userInfo && (
-                <Button
-                  variant="outlined"
-                  style={{
-                    margin: deviceType === "mobile" ? "20px 20px" : "initial",
-                  }}
-                  color="primary"
-                  onClick={() => {
-                    setSelectedLink("history");
-                    navigate("/login");
-                  }}
-                >
-                  I am Sonar
-                </Button>
-              )}
-            </> */}
+          {/* Use ms-auto to push nav to the right, align-items-center for vertical alignment */}
+          <Nav
+            className="ms-auto align-items-center"
+            style={{ gap: "16px", display: "flex" }} // Added display: flex for gap to work
+          >
             <LinkContainer className="mb-2" to="/">
-              <NavDropdown.Item className="mr-2">Home</NavDropdown.Item>
+              <NavDropdown.Item
+                className="mr-2"
+                style={{
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  borderRadius: "8px",
+                  padding: "8px 18px",
+                  margin: "0 4px",
+                  transition: "background 0.2s, color 0.2s",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "#fda085";
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLElement).style.background =
+                    "transparent";
+                  (e.currentTarget as HTMLElement).style.color = "#1e293b";
+                }}
+              >
+                Home
+              </NavDropdown.Item>
             </LinkContainer>
-
+            {/* ... rest of menu items unchanged ... */}
             <LinkContainer className="mb-2" to="/ourBlogs">
-              <NavDropdown.Item className="mr-2">Blogs</NavDropdown.Item>
+              <NavDropdown.Item
+                className="mr-2"
+                style={{
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  borderRadius: "8px",
+                  padding: "8px 18px",
+                  margin: "0 4px",
+                  transition: "background 0.2s, color 0.2s",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "#fda085";
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLElement).style.background =
+                    "transparent";
+                  (e.currentTarget as HTMLElement).style.color = "#1e293b";
+                }}
+              >
+                Blogs
+              </NavDropdown.Item>
             </LinkContainer>
-
-            {/* <LinkContainer className="mb-2" to="/participantList">
-              <NavDropdown.Item className="mr-2">Participant List</NavDropdown.Item>
-            </LinkContainer> */}
-
             <LinkContainer className="mb-2" to="/ourPartner">
-              <NavDropdown.Item className="mr-2">Our Partner</NavDropdown.Item>
+              <NavDropdown.Item
+                className="mr-2"
+                style={{
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  borderRadius: "8px",
+                  padding: "8px 18px",
+                  margin: "0 4px",
+                  transition: "background 0.2s, color 0.2s",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "#fda085";
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLElement).style.background =
+                    "transparent";
+                  (e.currentTarget as HTMLElement).style.color = "#1e293b";
+                }}
+              >
+                Our Partner
+              </NavDropdown.Item>
             </LinkContainer>
             <LinkContainer className="mb-2" to="/aboutUs">
-              <NavDropdown.Item className="mr-2">About Us</NavDropdown.Item>
-            </LinkContainer>
-            {/* <LinkContainer className="mb-2" to="/ourChannel">
-              <NavDropdown.Item className="mr-2">Our Channel</NavDropdown.Item>
-            </LinkContainer> */}
-
-           
-            <LinkContainer className="mb-2" to="/contactUs">
-              <NavDropdown.Item className="mr-2">Contact Us</NavDropdown.Item>
-            </LinkContainer>
-{/* 
-            <LinkContainer className="mb-2" to="/viewParticipantListSDDSDFFDFCZXADSsdfdfefdcsade12343234543">
-              <NavDropdown.Item className="mr-2">Admin</NavDropdown.Item>
-            </LinkContainer> */}
-
-
-            {/* <NavDropdown
-                style={{marginTop:deviceType==='mobile'? '10px':'initial'}}
-                // title={<span>{userProfileVisibleLogic(userInfo?.name)}</span>}
-                title={<span>{userInfo?.name}</span>}
-                id="username"
+              <NavDropdown.Item
+                className="mr-2"
+                style={{
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  borderRadius: "8px",
+                  padding: "8px 18px",
+                  margin: "0 4px",
+                  transition: "background 0.2s, color 0.2s",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "#fda085";
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLElement).style.background =
+                    "transparent";
+                  (e.currentTarget as HTMLElement).style.color = "#1e293b";
+                }}
               >
-                <LinkContainer to="/profile">
-                  <NavDropdown.Item>Profile</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to="/productList">
-                  <NavDropdown.Item>Add your product</NavDropdown.Item>
-                </LinkContainer>
-                
-              </NavDropdown> */}
+                About Us
+              </NavDropdown.Item>
+            </LinkContainer>
+            <LinkContainer className="mb-2" to="/contactUs">
+              <NavDropdown.Item
+                className="mr-2"
+                style={{
+                  fontWeight: 600,
+                  color: "#1e293b",
+                  borderRadius: "8px",
+                  padding: "8px 18px",
+                  margin: "0 4px",
+                  transition: "background 0.2s, color 0.2s",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onMouseOver={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "#fda085";
+                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                }}
+                onMouseOut={(e) => {
+                  (e.currentTarget as HTMLElement).style.background =
+                    "transparent";
+                  (e.currentTarget as HTMLElement).style.color = "#1e293b";
+                }}
+              >
+                Contact Us
+              </NavDropdown.Item>
+            </LinkContainer>
+            {/* ... existing code ... */}
           </Nav>
         </Navbar.Collapse>
+        {/* // ... existing code ... */}
       </Container>
     </Navbar>
   );
