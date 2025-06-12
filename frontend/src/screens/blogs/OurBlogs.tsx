@@ -19,22 +19,14 @@ function OurBlogs() {
     fetchArticles();
   }, []);
 
+  // ... existing code ...
   return (
     <div className="p-3">
-      {/* <h1>Latest Medium Articles</h1> */}
-      {/* <div
-        className="mb-2"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "4px",
-          alignSelf: "start",
-        }}
-      >
-        <ArrowBackIcon onClick={() => navigate("/")} />
-        <h2 className="mb-0">Blogs</h2>
-      </div> */}
+      {/* Medium Articles Section */}
       <Container className="my-4">
+        <h2 className="mb-4" style={{ fontWeight: "bold" }}>
+          Medium Blogs
+        </h2>
         <Row className="g-3">
           {articles?.map((article: any, index: any) => (
             <Col key={index} xs={12} sm={6} lg={4}>
@@ -56,24 +48,19 @@ function OurBlogs() {
                   />
                 </a>
                 <Card.Body>
-                  <a href={article?.link} target="" rel="noopener noreferrer">
+                  <a
+                    href={article?.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Card.Title className="mb-2">{article?.title}</Card.Title>
                   </a>
-                  {/* <Card.Text>
-                  Tags:{" "}
-                  {article.categories.map((category: string, index: number) => (
-                    <a href={`#${category}`} key={index}>
-                      {category}
-                      {index < article.categories.length - 1 && ", "}
-                    </a>
-                  ))}
-                </Card.Text> */}
                 </Card.Body>
                 <Card.Footer className="bg-transparent border-0">
                   <Button
                     variant="warning"
                     href={article?.link}
-                    target=""
+                    target="_blank"
                     className="d-flex align-items-center justify-content-center"
                   >
                     Read more
@@ -100,40 +87,51 @@ function OurBlogs() {
           ))}
         </Row>
       </Container>
-      <div>
-        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-          Linkedin Post
-        </Typography>
-      </div>
-      <div style={{ border: "4px solid lightseagreen", borderRadius: "2px", marginBottom:'10px' }}>
-        <iframe
-          src="https://www.linkedin.com/embed/feed/update/urn:li:share:7268523071064457217"
-          height="400"
-          width="100%"
-          frameBorder="0"
-          title="Embedded post"
-        ></iframe>
-      </div>
-      <div style={{ border: "4px solid lightseagreen", borderRadius: "2px" ,marginBottom:'10px' }}>
-      <iframe
-        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7267559034411507712"
-        height="400"
-        width="100%"
-        frameBorder="0"
-        title="Embedded post"
-      ></iframe>
-      </div>
-      <div style={{ border: "4px solid lightseagreen", borderRadius: "2px",marginBottom:'10px' }}>
-      <iframe
-        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7212169672161431552"
-        height="400"
-        width="100%"
-        frameBorder="0"
-        title="Embedded post"
-      ></iframe>
-      </div>
+      {/* LinkedIn Posts Section */}
+      {/* <Container className="my-5">
+        <h2
+          className="mb-4 text-center"
+          style={{ fontWeight: "700", color: "#00796B" }}
+        >
+          LinkedIn Posts
+        </h2>
+
+        {[
+          "7268523071064457217",
+          "7267559034411507712",
+          "7212169672161431552",
+        ].map((postId, index) => (
+          <div
+            key={index}
+            style={{
+              border: "1px solid #ddd",
+              borderRadius: "10px",
+              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.05)",
+              overflow: "hidden",
+              marginBottom: "30px",
+              backgroundColor: "#fff",
+            }}
+          >
+            <iframe
+              src={`https://www.linkedin.com/embed/feed/update/urn:li:share:${postId}`}
+              height="400"
+              width="100%"
+              frameBorder="0"
+              title={`Embedded post ${index + 1}`}
+              allowFullScreen
+              style={{
+                border: "none",
+                display: "block",
+                width: "100%",
+              }}
+            ></iframe>
+          </div>
+        ))}
+      </Container> */}
+      );
     </div>
   );
+  // ... existing code ...
 }
 
 export default OurBlogs;

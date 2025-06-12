@@ -4,13 +4,11 @@ import Footer from "./components/Footer";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ReactGA from 'react-ga4';
-
-
+import ReactGA from "react-ga4";
 
 const App = () => {
   // ReactGA.initialize(process.env.MEASURE_ID || '');
-  console.log("process.env.MEASURE_ID:",process.env.MEASURE_ID);
+  console.log("process.env.MEASURE_ID:", process.env.MEASURE_ID);
   return (
     <>
       <Header />

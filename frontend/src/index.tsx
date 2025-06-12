@@ -32,7 +32,6 @@ import OurPartner from "./screens/admin/ourPartner/OurPartner";
 import ContactUs from "./screens/contactUs/contactUs";
 import OurBlogs from "./screens/blogs/OurBlogs";
 
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -40,13 +39,18 @@ const router = createBrowserRouter(
       <Route path="/success" element={<SuccessScreen />}></Route>
       <Route path="/aboutUs" element={<AboutUsScreen />}></Route>
       <Route path="/ourChannel" element={<YouTubeEmbed />}></Route>
-      <Route path="/participantList" element={<ParticipantListScreen />}></Route>
-      <Route path="/viewParticipantListSDDSDFFDFCZXADSsdfdfefdcsade12343234543" element={<ViewAdminParticipantScreen />}></Route>
+      <Route
+        path="/participantList"
+        element={<ParticipantListScreen />}
+      ></Route>
+      <Route
+        path="/viewParticipantListSDDSDFFDFCZXADSsdfdfefdcsade12343234543"
+        element={<ViewAdminParticipantScreen />}
+      ></Route>
       <Route path="/ourPartner" element={<OurPartner />}></Route>
       <Route path="/contactUs" element={<ContactUs />}></Route>
       <Route path="/ourBlogs" element={<OurBlogs />}></Route>
       <Route path="/*" element={<NotFoundRoute />}></Route>
-      
 
       {/* <Route path="/page/:pageNumber" element={<Landing />} />
       <Route path="/search/:keyword/page/:pageNumber" element={<Landing />} />
@@ -71,9 +75,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-     <BackgroundGradient />
+    <BackgroundGradient />
     <Provider store={store}>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
