@@ -9,6 +9,7 @@ import { NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 // import { logout } from "../slices/authSlice";
 import useDeviceType from "../utils/DeviceType";
+import { companyLogo } from "../assets";
 
 const Header = () => {
   const deviceType = useDeviceType();
@@ -38,8 +39,8 @@ const Header = () => {
         background: "rgba(255,255,255,0.7)",
         backdropFilter: "blur(10px)",
         boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.10)",
-        borderBottom: "1.5px solid #fda085",
-        borderRadius: "0 0 18px 18px",
+        // borderBottom: "1.5px solid #fda085",
+        // borderRadius: "0 0 18px 18px",
         padding: "0.5rem 0",
         transition: "background 0.3s",
       }}
@@ -51,7 +52,11 @@ const Header = () => {
           }}
           onClick={() => navigate("/")}
         >
-          <img src={logo} style={{ height: "100px" }} alt="" />
+          <img
+            src={companyLogo}
+            style={{ height: deviceType === "mobile" ? "50px" : "60px" }}
+            alt=""
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         {/* // ... existing code ... */}

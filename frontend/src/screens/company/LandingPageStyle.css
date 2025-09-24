@@ -1,0 +1,229 @@
+/* style.css - Company Website Styling */
+
+/* Global */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222;
+  background: #f9f9f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 12px;
+  color: #111;
+}
+
+p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  background: #007bff;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a.btn-primary {
+  background: #007bff;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 40px 0;
+  gap: 24px;
+}
+
+.hero-text {
+  flex: 1 1 55%;
+}
+
+.hero-text h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.hero-buttons a {
+  margin-right: 10px;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn-secondary {
+  background: #eee;
+  color: #333;
+}
+
+.hero-list li {
+  margin-bottom: 8px;
+}
+
+.hero-card {
+  flex: 1 1 35%;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.hero-card dt {
+  font-weight: bold;
+}
+
+.hero-card dd {
+  margin: 0 0 12px;
+}
+
+/* Sections */
+section {
+  padding: 40px 0;
+}
+
+section h3 {
+  margin-bottom: 16px;
+  font-size: 22px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Process */
+.process ol {
+  list-style: none;
+  padding: 0;
+}
+
+.process li {
+  margin-bottom: 12px;
+}
+
+/* Contact */
+.contact-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.contact-info > div {
+  margin-bottom: 8px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.form-buttons button {
+  margin-right: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-buttons .btn-primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.form-buttons .btn-secondary {
+  background: #eee;
+  color: #333;
+}
+
+/* GST Section */
+.gst-card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer div {
+  margin-bottom: 8px;
+}

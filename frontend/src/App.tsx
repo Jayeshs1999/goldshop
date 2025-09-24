@@ -14,14 +14,14 @@ const App = () => {
       <Header />
       <main
         style={{
-          height: "calc(100vh - 173px)",
+          height: "calc(100vh - 86px)",
           overflow: "auto",
           // padding: deviceType==='mobile'? '6px' :"20px",
         }}
       >
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
       <ToastContainer />
     </>
   );
