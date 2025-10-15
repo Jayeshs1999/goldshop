@@ -1,8 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import useDeviceType from "../../utils/DeviceType";
 
 function App() {
+  const deviceType = useDeviceType();
   const driveFileId = "1y18mgMtaQuSOQp3bicxUAOp86StMJjOJ";
 
   // Direct preview URL
@@ -41,7 +43,7 @@ function App() {
                 <iframe
                   src={videoUrl}
                   width="100%"
-                  height="600"
+                  height={deviceType === "mobile" ? "300" : "600"}
                   allow="autoplay; fullscreen"
                   allowFullScreen
                   title="स्थळ Marathi Movie Player"
