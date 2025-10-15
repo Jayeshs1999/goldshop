@@ -9,7 +9,7 @@ import { NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 // import { logout } from "../slices/authSlice";
 import useDeviceType from "../utils/DeviceType";
-import { companyLogo } from "../assets";
+import { mh } from "../assets";
 
 const Header = () => {
   const deviceType = useDeviceType();
@@ -53,8 +53,8 @@ const Header = () => {
           onClick={() => navigate("/")}
         >
           <img
-            src={companyLogo}
-            style={{ height: deviceType === "mobile" ? "50px" : "60px" }}
+            src={mh}
+            style={{ height: deviceType === "mobile" ? "70px" : "90px" }}
             alt=""
           />
         </Navbar.Brand>
@@ -66,7 +66,7 @@ const Header = () => {
             className="ms-auto align-items-center"
             style={{ gap: "16px", display: "flex" }} // Added display: flex for gap to work
           >
-            <LinkContainer className="mb-2" to="/">
+            {/* <LinkContainer className="mb-2" to="/">
               <NavDropdown.Item
                 className="mr-2"
                 style={{
@@ -91,9 +91,9 @@ const Header = () => {
               >
                 Home
               </NavDropdown.Item>
-            </LinkContainer>
+            </LinkContainer> */}
             {/* ... rest of menu items unchanged ... */}
-            <LinkContainer className="mb-2" to="/ourBlogs">
+            {/* <LinkContainer className="mb-2" to="/ourBlogs">
               <NavDropdown.Item
                 className="mr-2"
                 style={{
@@ -118,8 +118,8 @@ const Header = () => {
               >
                 Blogs
               </NavDropdown.Item>
-            </LinkContainer>
-            <LinkContainer className="mb-2" to="/ourPartner">
+            </LinkContainer> */}
+            {/* <LinkContainer className="mb-2" to="/ourPartner">
               <NavDropdown.Item
                 className="mr-2"
                 style={{
@@ -144,8 +144,8 @@ const Header = () => {
               >
                 Our Partner
               </NavDropdown.Item>
-            </LinkContainer>
-            <LinkContainer className="mb-2" to="/aboutUs">
+            </LinkContainer> */}
+            {/* <LinkContainer className="mb-2" to="/aboutUs">
               <NavDropdown.Item
                 className="mr-2"
                 style={{
@@ -170,8 +170,8 @@ const Header = () => {
               >
                 About Us
               </NavDropdown.Item>
-            </LinkContainer>
-            <LinkContainer className="mb-2" to="/contactUs">
+            </LinkContainer> */}
+            {/* <LinkContainer className="mb-2" to="/contactUs">
               <NavDropdown.Item
                 className="mr-2"
                 style={{
@@ -196,7 +196,7 @@ const Header = () => {
               >
                 Contact Us
               </NavDropdown.Item>
-            </LinkContainer>
+            </LinkContainer> */}
             {/* ... existing code ... */}
           </Nav>
         </Navbar.Collapse>
