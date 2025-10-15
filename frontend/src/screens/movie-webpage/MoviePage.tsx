@@ -1,9 +1,20 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 
 function App() {
   const driveFileId = "1y18mgMtaQuSOQp3bicxUAOp86StMJjOJ";
+
+  // Direct preview URL
+  const videoUrl = `https://drive.google.com/file/d/${driveFileId}/preview`;
+
+  // Fullscreen handler (for iframe container)
+  const openFullscreen = () => {
+    const iframeContainer = document.getElementById("movie-player");
+    if (iframeContainer?.requestFullscreen) {
+      iframeContainer.requestFullscreen();
+    }
+  };
 
   return (
     <>
@@ -11,7 +22,7 @@ function App() {
         <title>स्थळ मराठी मूवी ऑनलाईन | Watch Online</title>
         <meta
           name="description"
-          content="Watch स्थळ मराठी मूवी online. Stream directly"
+          content="Watch स्थळ मराठी मूवी online. Stream directly in HD quality."
         />
         <meta
           name="keywords"
@@ -19,33 +30,40 @@ function App() {
         />
       </Helmet>
 
-      <Container className="mt-5">
+      <Container fluid className="py-5 bg-dark text-white">
         <Row className="justify-content-center">
-          <Col md={8}>
-            <Card className="shadow-lg border-0">
-              <Card.Header className="bg-dark text-white text-center py-3">
-                <h4>🎬 स्थळ मराठी मूवी ऑनलाईन</h4>
+          <Col lg={10}>
+            <Card className="shadow-lg border-0 bg-black">
+              <Card.Header className="bg-dark text-center py-3 border-0 color-white">
+                <h3 style={{ color: "white" }}>🎬 स्थळ मराठी मूवी ऑनलाईन</h3>
               </Card.Header>
-              <Card.Body className="text-center">
-                <p>
-                  Watch the latest Marathi movie <strong>स्थळ</strong> online.
-                  Enjoy HD streaming directly.
-                </p>
-
-                <div className="ratio ratio-16x9">
-                  <iframe
-                    src={`https://drive.google.com/file/d/${driveFileId}/preview`}
-                    width="100%"
-                    height="480"
-                    allow="autoplay"
-                    title="Movie Player"
-                  ></iframe>
-                </div>
-
-                <p className="mt-3 text-muted">
+              <Card.Body className="text-center p-0" id="movie-player">
+                <iframe
+                  src={videoUrl}
+                  width="100%"
+                  height="600"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                  title="स्थळ Marathi Movie Player"
+                  style={{
+                    border: "none",
+                    borderRadius: "0px",
+                    display: "block",
+                  }}
+                ></iframe>
+              </Card.Body>
+              <Card.Footer className="bg-dark text-center border-0">
+                <Button
+                  variant="outline-light"
+                  className="mt-3"
+                  onClick={openFullscreen}
+                >
+                  ⛶ Watch Full Screen
+                </Button>
+                <p className="mt-3 text-secondary mb-0 small">
                   Streaming from Maharashtrachya Kushit
                 </p>
-              </Card.Body>
+              </Card.Footer>
             </Card>
           </Col>
         </Row>
